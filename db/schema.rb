@@ -10,8 +10,84 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_074556) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "artists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_chatrooms_on_group_id"
+  end
+
+  create_table "concerts", force: :cascade do |t|
+    t.bigint "artist_id", null: false
+    t.date "date"
+    t.string "location"
+    t.text "description"
+    t.string "venue"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_concerts_on_artist_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.bigint "artist_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_follows_on_artist_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.bigint "concert_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["concert_id"], name: "index_groups_on_concert_id"
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_invitations_on_group_id"
+    t.index ["user_id"], name: "index_invitations_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "chatrooms", "groups"
+  add_foreign_key "concerts", "artists"
+  add_foreign_key "follows", "artists"
+  add_foreign_key "follows", "users"
+  add_foreign_key "groups", "concerts"
+  add_foreign_key "invitations", "groups"
+  add_foreign_key "invitations", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
 end
