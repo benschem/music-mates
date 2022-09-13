@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :groups, through: :invitations
   has_many :follows
   has_many :artists, through: :follows
+  has_many :messages
+  has_many :chatrooms, through: :messages
 
   validates :location, presence: true
   validates :first_name, presence: true

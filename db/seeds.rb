@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require "faker"
+puts "Cleaning database..."
+
+User.destroy_all # if Rails.en.development
+
+puts "Creating Music Mates..."
+
+User.create!(
+  first_name: "Music",
+  last_name: "Mates",
+  email: "music@mates.com",
+  password: "123456",
+  location: "Melbourne"
+)
+puts "Created User: Music Mates, Email: music@mates.com, Password: 123456, Location: Melbourne."
