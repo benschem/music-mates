@@ -10,6 +10,11 @@ puts "Cleaning database..."
 User.destroy_all # if Rails.en.development
 Artist.destroy_all
 Concert.destroy_all
+Group.destroy_all
+Invitation.destroy_all
+Follow.destroy_all
+Chatroom.destroy_all
+Message.destroy_all
 
 User.create!(
   first_name: "Music",
@@ -47,14 +52,12 @@ hunter = User.create(
   email: "hunter@chomp.com",
   password: "123456"
 )
-puts "#{hunter.first_name}"
+puts "#{hunter.first_name} has been born!"
 
 follow = Follow.create(
   artist: Artist.first,
   user: hunter
 )
-
-puts "#{hunter.first_name} follows !"
 
 group = Group.create(
   concert: Concert.first
@@ -66,5 +69,5 @@ invite = Invitation.create(
   status: 1
 )
 
-
+puts "#{hunter.first_name} follows #{follow.artist.name}!"
 puts "Done!"
