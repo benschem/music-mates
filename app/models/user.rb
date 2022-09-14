@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :invitations
+  has_many :invitations, dependent: :destroy
   has_many :groups, through: :invitations
-  has_many :follows
+  has_many :follows, dependent: :destroy
   has_many :artists, through: :follows
 
   validates :location, presence: true
