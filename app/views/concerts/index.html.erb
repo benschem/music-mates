@@ -12,3 +12,23 @@
   </div>
 <% end %>
 </div>
+
+<div class="concerts-wrap">
+<% @concerts.each do |concert| %>
+  <div class="concert-card">
+    <div class="concert-info">
+      <h2><strong><%= concert.artist.name %></strong></h2>
+      <p><strong><%= concert.date %></strong></p>
+      <p><%= concert.venue %>, <%= concert.location %></p>
+    </div>
+    <div class="concert-avatars">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+    </div>
+  </div>
+<% end %>
+</div>
