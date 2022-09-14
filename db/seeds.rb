@@ -8,26 +8,64 @@
 
 puts "Cleaning database..."
 User.destroy_all # if Rails.en.development
+Artist.destroy_all
 Concert.destroy_all
-Follow.destroy_all
 
 User.create!(
+  first_name: "Music",
+  last_name: "Mates",
   email: "music@mates.com",
   password: "123456",
-  first_name: "Ben",
-  last_name: "Schem",
   location: "Melbourne"
 )
-puts "Email: music@mates.com, Password: 123456."
+puts "Created User: Music Mates, Email: music@mates.com, Password: 123456."
 
-user1 = User.create({first_name: "Ben", last_name: "Schem", location: "Melbourne"})
-puts user1
-artist1 = Artist.create({name: "Central Cee"})
-puts artist1
-concert1 = Concert.create({date: Date.today, location: "Melbourne", description: "My bitch is gay", venue: "Forum"})
-puts concert1
+location = ["Melbourne", "Canberra", "Brisbane", "Hobart", "Sydney"]
+venue = ["MCG", "The Pub", "Your Backyard", "Sydney Opera House", "McDonald's"]
 
-follows1 = Follow.create
+5.times do
+  artist = Artist.new(
+    name: Faker::Kpop.girl_groups
+  )
+  artist.save
+  puts "Created #{artist.name}"
+  concert = Concert.new(
+    date: Date.today,
+    location: location.sample,
+    description: Faker::Quotes::Shakespeare.hamlet_quote,
+    venue: venue.sample,
+    artist: artist
+  )
+  concert.save
+  puts "Created #{concert.artist.name}'s concert on #{concert.date} at #{concert.date}, #{concert.venue}."
+end
 
-follows1.artist = artist1
-follows1.user = user1
+hunter = User.create(
+  first_name: "Hunter",
+  last_name: "Shark",
+  location: "Sydney",
+  email: "hunter@chomp.com",
+  password: "123456"
+)
+puts "#{hunter.first_name}"
+
+follow = Follow.create(
+  artist: Artist.first,
+  user: hunter
+)
+
+puts "#{hunter.first_name} follows !"
+
+group = Group.create(
+  concert: Concert.first
+)
+
+invite = Invitation.create(
+  user: hunter,
+  group: group,
+  status: 1
+)
+
+
+puts "Done!"
+
