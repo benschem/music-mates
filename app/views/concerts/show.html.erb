@@ -1,1 +1,45 @@
-This is Concert Show
+<div class="show">
+  <img src="https://koreajoongangdaily.joins.com/data/photo/2022/08/12/4061635e-b480-467b-90f5-cab3f8d64e5c.jpg" alt="IU Concert" class="show-image" >
+  <h1><%= @concert.artist.name %></h1>
+  <div class="show-create">
+    <div class="show-detail">
+      <h2>Let's Go!</h2>
+      <h3>Create a Group for this Event</h3>
+    <!-- <%= link_to "Let's Go! \n Create a Group for this Event", concert_path, class: 'btn' %> -->
+    </div>
+    <div class="show-emoji">
+      🤝
+    </div>
+  </div>
+  <div class="show-detail-container">
+    <div class="show-emoji">
+      📅
+    </div>
+    <div class="show-detail">
+      <h2><%= @concert.date.strftime("%A %e %B %Y") %></h2>
+      <h3>From <%= @concert.date.strftime("%l:%M %P %Z") %></h3>
+      <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
+    </div>
+  </div>
+  <div class="show-detail-container">
+    <div class="show-emoji">
+      📍
+    </div>
+    <div class="show-detail">
+      <h2><%= @concert.location %></h2>
+      <h3>From <%= @concert.venue %></h3>
+    </div>
+  </div>
+  <div class="show-detail-container">
+    <div class="show-emoji">
+      🧑‍🤝‍🧑
+    </div>
+    <div class="show-detail">
+      <h2>12 of your friends </h2>
+      <h3>might be going</h3>
+    </div>
+  </div>
+  <div class="show-desc">
+    <p><%= @concert.description %></p>
+  </div>
+</div>
