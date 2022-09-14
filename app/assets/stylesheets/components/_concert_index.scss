@@ -1,0 +1,37 @@
+.concert-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  height: 200px;
+  width: 315px;
+  border: 1.5px solid #2B3A67;
+  border-radius: 5px;
+  margin: 16px auto;
+  padding: 12px;
+  background-image: linear-gradient(black, black), url("https://trenchtrenchtrench.com/assets/articles/central-cee-credit-kunography-2.jpg");
+  background-size: cover;
+  background-blend-mode: saturation;
+  box-shadow: 1px 1px lightgrey;
+  transition: 0.05s;
+}
+
+.concert-card:active {
+  background-image: url("https://trenchtrenchtrench.com/assets/articles/central-cee-credit-kunography-2.jpg");
+  background-size: cover;
+  transform: scale(1.02);
+}
+
+.concert-card h2 {
+  font-size: 20px;
+  margin-bottom: 4px;
+  color: white;
+  text-shadow: 0.75px 0.75px #2B3A67;
+}
+
+.concert-card p {
+  font-size: 12px;
+  margin-bottom: 3px;
+  color: white;
+  text-shadow: 0.75px 0.75px #2B3A67;
+}
