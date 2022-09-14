@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :groups, through: :invitations
   has_many :follows, dependent: :destroy
   has_many :artists, through: :follows
+  has_many :messages
 
   has_one_attached :photo
 

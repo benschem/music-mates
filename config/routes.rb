@@ -12,4 +12,7 @@ Rails.application.routes.draw do
     resources :groups, only: %i[create new show]
   end
   resources :invitations, only: %i[index]
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end
