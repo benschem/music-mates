@@ -68,4 +68,3 @@ invite = Invitation.create(
 
 
 puts "Done!"
-
