@@ -71,4 +71,3 @@ invite = Invitation.create(
 
 puts "#{hunter.first_name} follows #{follow.artist.name}!"
 puts "Done!"
-
