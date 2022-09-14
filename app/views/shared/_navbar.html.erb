@@ -1,0 +1,19 @@
+<div class="navbar navbar-expand-sm navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "https://ar.toneden.io/27590134/0657b757-3f69-4696-9744-d0c0be1e0ed7"%>
+      <%= "MusicMates" %>
+    <% end %>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

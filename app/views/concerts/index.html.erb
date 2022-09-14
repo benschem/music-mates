@@ -1,0 +1,34 @@
+<div class="search">
+<div class="search-bar">
+<%= form_with url: concerts_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Explore upcoming gigs"
+  %>
+  <button name="button" type="submit" class="btn btn-flat">
+    <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
+  </button>
+  </div>
+<% end %>
+</div>
+
+<div class="concerts-wrap">
+<% @concerts.each do |concert| %>
+  <div class="concert-card">
+    <div class="concert-info">
+      <h2><strong><%= concert.artist.name %></strong></h2>
+      <p><strong><%= concert.date %></strong></p>
+      <p><%= concert.venue %>, <%= concert.location %></p>
+    </div>
+    <div class="concert-avatars">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+    </div>
+  </div>
+<% end %>
+</div>
