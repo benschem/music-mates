@@ -45,14 +45,22 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
-gem "devise"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# CSS helper for different browsers
 gem "autoprefixer-rails"
+
+#Fonts and icons
 gem "font-awesome-sass", "~> 6.1"
+
+# Better forms
 gem "simple_form", github: "heartcombo/simple_form"
+
+# Authentication
 gem "devise"
+
+# Dummy data
 gem "faker"
 
 group :development, :test do
