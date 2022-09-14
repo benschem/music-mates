@@ -1,0 +1,22 @@
+.search {
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  width: 330px;
+  border: 2px solid #2B3A67;
+  border-radius: 18px;
+  box-shadow: 1px 1px lightgrey;
+}
+
+.search .form-control {
+  border: 0;
+}
+
+.search img {
+  height: 20px;
+  width: 20px;
+}
+
+#query {
+  border-radius: 18px;
+}
