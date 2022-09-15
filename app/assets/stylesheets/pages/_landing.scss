@@ -1,15 +1,18 @@
 #landing-container {
   background-color: #2b3a67;
   padding: 15px;
-  height: 746px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
 
   img {
     margin-left: 25px;
+    top: 240px;
+    position: absolute;
   }
 
   p {
@@ -22,7 +25,7 @@
   }
 
   #p2 {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 
   #landing-btn {
@@ -37,8 +40,7 @@
 
   #landing-btn:focus {
     background-color: #00e070;
-    border: 1px solid white;
-    transform: translateY(-0.15em);
-    box-shadow: 0 0.5px 0.5px #00e070;
+    border: 2px solid white;
+    transform: scale(1.02);
   }
 }
