@@ -1,16 +1,6 @@
 <div class="show">
   <img src="https://koreajoongangdaily.joins.com/data/photo/2022/08/12/4061635e-b480-467b-90f5-cab3f8d64e5c.jpg" alt="IU Concert" class="show-image" >
-  <h1><%= @concert.artist.name %></h1>
-  <div class="show-create">
-    <div class="show-detail">
-      <h2>Let's Go!</h2>
-      <h3>Create a Group for this Event</h3>
-    <!-- <%= link_to "Let's Go! \n Create a Group for this Event", concert_path, class: 'btn' %> -->
-    </div>
-    <div class="show-emoji">
-      🤝
-    </div>
-  </div>
+  <h1 id="show-h1"><%= @concert.artist.name %></h1>
   <div class="show-detail-container">
     <div class="show-emoji">
       📅
@@ -41,5 +31,20 @@
   </div>
   <div class="show-desc">
     <p><%= @concert.description %></p>
+    <p></p>
   </div>
+</div>
+
+<div id="show-btn-container">
+<%= link_to "Create a group!", "#", id:"show-btn" %>
+</div>
+
+
+<div class="footer-space"></div>
+
+<div class="footer-musicmates">
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" class="icons"><i class="fa-solid fa-house"></i></a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" class="icons"><i class="fa-solid fa-clipboard-list"></i></a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" class="icons"><i class="fa-solid fa-envelope"></i></a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" class="icons"><i class="fa-solid fa-user"></i></a>
 </div>
