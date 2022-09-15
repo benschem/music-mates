@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :concerts, only: %i[index show] do
-    resources :groups, only: %i[create new show]
+    resources :groups, only: %i[create new]
   end
+  resources :groups, only: :show
   resources :invitations, only: %i[index]
   resources :chatrooms, only: :show do
     resources :messages, only: :create
