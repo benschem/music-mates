@@ -1,5 +1,4 @@
 class GroupsController < ApplicationController
-
   def create
     @concert = Concert.find(params[:concert_id])
     @group = Group.new(concert: @concert)

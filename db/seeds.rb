@@ -21,7 +21,8 @@ User.create!(
   last_name: "Mates",
   email: "music@mates.com",
   password: "123456",
-  location: "Melbourne"
+  location: "Melbourne",
+  avatar: "IMG_2571"
 )
 puts "Created User: Music Mates, Email: music@mates.com, Password: 123456."
 
@@ -52,7 +53,8 @@ hunter = User.create(
   last_name: "Shark",
   location: "Sydney",
   email: "hunter@chomp.com",
-  password: "123456"
+  password: "123456",
+  avatar: "./seedimages/IMG_2579"
 )
 puts "#{hunter.first_name} has been born!"
 
