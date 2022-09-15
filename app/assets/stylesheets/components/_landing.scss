@@ -7,21 +7,14 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  justify-items: center;
 
-  img {
-    margin-left: 25px;
-  }
-
-  p {
-    font-size: 13px;
+  .tagline {
+    display: flex;
+    flex-direction: column;
     color: white;
-  }
-
-  #p1 {
     margin-top: 20px;
-  }
-
-  #p2 {
+    font-size: 13px;
     margin-bottom: 25px;
   }
 
