@@ -1,0 +1,44 @@
+<h1><%= @concert.artist.name %></h1>
+<div class="friend-list">
+  <h2>Your Friends</h2>
+  <div class="create-group">
+    <%= simple_form_for [@concert, @group] do |f| %>
+      <ul>
+        <% @users.each do |user| %>
+        <li><%= user.first_name + " " + user.last_name %> <%= check_box_tag 'user_ids[]', user.id -%></li>
+        <% end %>
+      </ul>
+      <%= f.submit "Let's Go!", class: "btn" %>
+    <% end %>
+  </div>
+</div>
+
+<!--
+create a button to create a new group DONE!
+display all the users (for now) to invite DONE!
+create invitation pending model DONE!
+
+Selecting user - checkbox/button
+
+
+
+This page should create invitation new
+Create new group (which has one user and rest pending)
+User friend
+
+A group is a hub for users (show)
+A new group can be formed by at least one person (new)
+A group has a host and participants
+
+Invitation page allows a user to select friends
+The user then sends invitations to others
+then the user creates a group
+
+Therefore, a group page allows an immediate creation of a group of a single user
+during creation, it sends invitations to other users
+
+@concert - for name and details
+@group - should be able to just create a new group with a button with the user
+@invites - list of friends
+
+-->

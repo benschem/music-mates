@@ -4,4 +4,5 @@ class InvitationsController < ApplicationController
     @invitations = Invitations.all
   end
 
+  def create; end
 end
