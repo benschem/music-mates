@@ -19,36 +19,44 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   def self.from_omniauth(auth)
-    where(email: auth.email).first_or_create do |user|
+    this_user = User.where(email: auth.extra.raw_info.email).first_or_create do |user|
+      user.first_name = auth.info.name.split[0]
+      user.last_name = auth.info.name.split[1]
+      user.location = auth.info.country_code
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      # user.name = auth.info.name   # assuming the user model has a name
-      # user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+      user.password_confirmation = user.password
+      user.avatar = auth.images[0]["url"]
     end
 
-    # Get the temp token
+    # this_user.token = auth.credentials.token => uncomment this if we need to call Spotify API elsewhere in the app
     token = auth.credentials.token
-    # Figure out how to get new user's top artists
+    top_artists = this_user.get_top_artists(token)
+    this_user.create_artists_and_follows(top_artists)
+    this_user
+  end
+
+  def get_top_artists(token)
     url = "https://api.spotify.com/v1/me/top/artists"
     endpoint = HTTParty.get(url, headers: {
       'Content-Type': "application/json",
       Authorization: "Bearer #{token}"
     })
+    endpoint.parsed_response["items"] # array of artists
+  end
 
-    artists = endpoint.parsed_response["items"] # array of artists
-    artists.each do |artist|
-      artist["name"] # The Jezabels
-      artist["images"][0]["url"] # 640px by 640px pic of artist
-      artist["genres"] # ["australian alternative rock", "australian indie", "australian pop"]
-      artist["external_urls"]["spotify"] # "https://open.spotify.com/artist/76KHdORVQMt7L6nVzvOUph"
+  def create_artists_and_follows(top_artists)
+    top_artists.each do |artist|
+      artist = Artist.where(name: artist["name"]).first_or_create(
+        name: artist["name"],
+        image_url: artist["images"][0]["url"], # 640px by 640px pic of artist (sub 0 for 1 or 2 to get smaller pics)
+        spotify_link: artist["external_urls"]["spotify"]
+        #   WE COULD ADD THIS... 👇
+        # genres: artist["genres"], # ["australian alternative rock", "australian indie", "australian pop"]
+        #   ...but only if we're actually going to use it for something
+        #   ...we'll either have to make a 'genres' table, or Jon suggests we use a gem 'acts as taggable'
+      )
+      Follow.where(user: self, artist: artist).first_or_create(user: self, artist: artist)
     end
-
-    raise
-    # Create all the followings for the current user
-
-    # TODO: Login devise with spotify
   end
 end
