@@ -1,16 +1,16 @@
 <div class="search">
 <div class="search-bar">
-<%= form_with url: concerts_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Explore upcoming gigs"
-  %>
-  <button name="button" type="submit" class="btn btn-flat">
-    <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
-  </button>
-  </div>
-<% end %>
+  <%= form_with url: concerts_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Explore upcoming gigs"
+    %>
+    <button name="button" type="submit" class="btn btn-flat">
+      <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
+    </button>
+    </div>
+  <% end %>
 </div>
 
 <div class="concerts-wrap">
