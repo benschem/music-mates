@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     this_user = User.where(email: auth.extra.raw_info.email).first_or_create do |user|
+      p user
       user.first_name = auth.info.name.split[0]
       user.last_name = auth.info.name.split[1]
       user.location = auth.info.country_code
@@ -27,6 +28,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
       user.avatar = auth.info.image
+      p user
     end
 
     # this_user.token = auth.credentials.token => uncomment this if we need to call Spotify API elsewhere in the app
