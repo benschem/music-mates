@@ -32,7 +32,7 @@ venue = ["MCG", "The Pub", "Your Backyard", "Sydney Opera House", "McDonald's"]
   artist = Artist.new(
     name: Faker::Kpop.girl_groups,
     image_url: "https://imgs.smoothradio.com/images/191589?width=1200&crop=16_9&signature=GRazrMVlAISqkcXrrNA6ku356R0=",
-    spotify_url: "https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt"
+    spotify_link: "https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt"
   )
   artist.save
   puts "Created #{artist.name}"
