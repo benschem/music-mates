@@ -3,6 +3,7 @@ class Group < ApplicationRecord
   has_many :chatrooms, dependent: :destroy
   has_many :invitations
   has_many :users, through: :invitations
+  has_one :chatroom
 
   validates :concert, presence: true
 end

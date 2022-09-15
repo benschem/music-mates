@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
     end
     if @group.save
       Invitation.create(invitations)
+      Chatroom.create(group: @group, name: @concert.artist.name)
       redirect_to group_path(@group)
     else
       render :new, status: :unprocessable_entity
@@ -26,6 +27,9 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @concert = Concert.find(@group.concert.id)
+    @chatroom = Chatroom.find(@group.chatroom.id)
+    @message = Message.new
   end
 
   private

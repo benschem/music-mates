@@ -16,7 +16,6 @@ class User < ApplicationRecord
 
   validates :location, presence: true
   validates :first_name, presence: true
-  validates :last_name, presence: true
 
   def self.from_omniauth(auth)
     this_user = User.where(email: auth.extra.raw_info.email).first_or_create do |user|
