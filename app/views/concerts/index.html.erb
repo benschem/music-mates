@@ -34,11 +34,19 @@
   </div>
 <% end %>
 
-<div class="footer-space"></div>
+<div id="concert-index-footer"></div>
 
 <div class="footer-musicmates">
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" id="#target1" class="icons target"><i class="fa-solid fa-house"></i></a>
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" id="#target2" class="icons target"><i class="fa-solid fa-clipboard-list"></i></a>
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" id="#target3" class="icons target"><i class="fa-solid fa-envelope"></i></a>
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank" id="#target4" class="icons target"><i class="fa-solid fa-user"></i></a>
+  <%= link_to "/concerts", class: "icons target", id: "target1" do %>
+    <i class="fa-solid fa-house"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target2" do %>
+    <i class="fa-solid fa-clipboard-list"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target3" do %>
+    <i class="fa-solid fa-envelope"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target4" do %>
+    <i class="fa-solid fa-user"></i>
+  <% end %>
 </div>
