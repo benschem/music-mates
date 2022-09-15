@@ -2,17 +2,21 @@
   img {
     width: 375px;
     height: 200px;
-    align-items: center;
-    display:block;
+    object-fit: cover;
+    display: block;
   }
   h1 {
     text-align: center;
-    font-size: 18;
     color: #2b3a67;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-weight: 700px;
   }
+}
+
+#show-h1 {
+  margin-top: 23px;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .show-desc {
@@ -25,7 +29,7 @@
   align-items: center;
   justify-content: space-around;
   border-radius: 16px;
-  box-shadow: 3px 3px 7px grey;
+  box-shadow: 1px 1px lightgrey;
   p {
     color: white;
     font-size: 12px;
@@ -41,7 +45,7 @@
   padding: 10px;
   background-color: #0eb1d2;
   border-radius: 16px;
-  box-shadow: 3px 3px 7px grey;
+  box-shadow: 1px 1px lightgrey;
   justify-content: space-around;
   align-items: center;
   .show-detail{
@@ -67,7 +71,7 @@
     text-align: center;
     background-color: #2b3a67;
     border-radius: 16px;
-    box-shadow: 3px 3px 7px grey;
+    box-shadow: 1px 1px lightgrey;
   }
 }
 
@@ -85,13 +89,13 @@
 .show-detail-container {
   display: flex;
   flex-direction: row;
-  margin: 5px auto 5px auto;
+  margin: 17px auto;
   width: 310px;
   height: 60px;
   padding: 10px;
   background-color: #2b3a67;
   border-radius: 16px;
-  box-shadow: 3px 3px 7px grey;
+  box-shadow: 1px 1px lightgrey;
   justify-content: space-around;
   align-items: center;
   .show-detail{
@@ -115,6 +119,33 @@
     width: 50px;
     font-size: 34px;
     text-align: center;
-
   }
+}
+
+#show-btn {
+  background-color: #00e070;
+  border: 1px solid #00e070;
+  width: 65%;
+  text-align: center;
+  border-radius: 7px;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  justify-content: center;
+  transition: all 0.33s;
+}
+
+#show-btn:focus {
+  background-color: #2b3a67;;
+  border: 1px solid white;
+  transform: scale(1.01);
+  box-shadow: 0 0.5px 0.5px #00e070;
+}
+
+#show-btn-container {
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -54,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_045305) do
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["group_id"], name: "index_chatrooms_on_group_id"
   end
 
@@ -99,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_045305) do
     t.bigint "chatroom_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content"
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end

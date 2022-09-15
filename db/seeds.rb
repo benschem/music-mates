@@ -71,5 +71,10 @@ invite = Invitation.create(
   status: 1
 )
 
+chatroom = Chatroom.create(
+  group: group,
+  name: "Shark Club"
+)
+
 puts "#{hunter.first_name} follows #{follow.artist.name}!"
 puts "Done!"
