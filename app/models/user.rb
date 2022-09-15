@@ -25,10 +25,10 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
-      # user.avatar = auth.images[0]["url"]
+      user.avatar = auth.images[0]["url"]
     end
 
-    # this_user.token = auth.credentials.token => If we need elsewhere in app to call Spotify API
+    # this_user.token = auth.credentials.token => uncomment this if we need to call Spotify API elsewhere in the app
     token = auth.credentials.token
     top_artists = this_user.get_top_artists(token)
     this_user.create_artists_and_follows(top_artists)
@@ -47,11 +47,13 @@ class User < ApplicationRecord
   def create_artists_and_follows(top_artists)
     top_artists.each do |artist|
       artist = Artist.where(name: artist["name"]).first_or_create(
-        name: artist["name"], # "The Jezabels"
-        # TO BE ADDED 👇
-        # image_url: artist["images"][0]["url"], # 640px by 640px pic of artist
+        name: artist["name"],
+        image_url: artist["images"][0]["url"], # 640px by 640px pic of artist (sub 0 for 1 or 2 to get smaller pics)
+        spotify_link: artist["external_urls"]["spotify"]
+        #   WE COULD ADD THIS... 👇
         # genres: artist["genres"], # ["australian alternative rock", "australian indie", "australian pop"]
-        # spotify_link: artist["external_urls"]["spotify"] # "https://open.spotify.com/artist/76KHdORVQMt7L6nVzvOUph"
+        #   ...but only if we're actually going to use it for something
+        #   ...we'll either have to make a 'genres' table, or Jon suggests we use a gem 'acts as taggable'
       )
       Follow.where(user: self, artist: artist).first_or_create(user: self, artist: artist)
     end
