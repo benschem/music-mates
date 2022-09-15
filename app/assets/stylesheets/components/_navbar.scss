@@ -1,4 +1,7 @@
 .navbar-lewagon {
+  position: fixed;
+  top: 0px;
+  width: 100%;
   justify-content: space-between;
   background: #2B3A67;
 }
@@ -18,4 +21,9 @@
 
 .nav-item .nav-link {
   color: white;
+}
+
+.navbar-space {
+  height: 66px;
+  background-color: #2B3A67;
 }
