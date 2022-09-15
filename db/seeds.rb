@@ -30,7 +30,9 @@ venue = ["MCG", "The Pub", "Your Backyard", "Sydney Opera House", "McDonald's"]
 
 5.times do
   artist = Artist.new(
-    name: Faker::Kpop.girl_groups
+    name: Faker::Kpop.girl_groups,
+    image_url: "https://imgs.smoothradio.com/images/191589?width=1200&crop=16_9&signature=GRazrMVlAISqkcXrrNA6ku356R0=",
+    spotify_link: "https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt"
   )
   artist.save
   puts "Created #{artist.name}"
@@ -67,6 +69,11 @@ invite = Invitation.create(
   user: hunter,
   group: group,
   status: 1
+)
+
+chatroom = Chatroom.create(
+  group: group,
+  name: "Shark Club"
 )
 
 puts "#{hunter.first_name} follows #{follow.artist.name}!"

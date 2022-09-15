@@ -64,6 +64,12 @@ gem "devise"
 # Dummy data
 gem "faker"
 
+# spotify authentication
+gem 'omniauth-spotify'
+
+# Making http requests in ruby
+gem 'httparty'
+
 # Cloud image hosting
 gem "cloudinary"
 

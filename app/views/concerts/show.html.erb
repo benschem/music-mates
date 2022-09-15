@@ -1,1 +1,61 @@
-This is Concert Show
+<div class="navbar-space"></div>
+<%= render "shared/navbar" %>
+
+<div class="show">
+  <img src="https://koreajoongangdaily.joins.com/data/photo/2022/08/12/4061635e-b480-467b-90f5-cab3f8d64e5c.jpg" alt="IU Concert" class="show-image" >
+  <h1 id="show-h1"><%= @concert.artist.name %></h1>
+  <div class="show-detail-container">
+    <div class="show-emoji">
+      📅
+    </div>
+    <div class="show-detail">
+      <h2><%= @concert.date.strftime("%A %e %B %Y") %></h2>
+      <h3>From <%= @concert.date.strftime("%l:%M %P %Z") %></h3>
+      <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
+    </div>
+  </div>
+  <div class="show-detail-container">
+    <div class="show-emoji">
+      📍
+    </div>
+    <div class="show-detail">
+      <h2><%= @concert.location %></h2>
+      <h3>From <%= @concert.venue %></h3>
+    </div>
+  </div>
+  <div class="show-detail-container">
+    <div class="show-emoji">
+      🧑‍🤝‍🧑
+    </div>
+    <div class="show-detail">
+      <h2>12 of your friends </h2>
+      <h3>might be going</h3>
+    </div>
+  </div>
+  <div class="show-desc">
+    <p><%= @concert.description %></p>
+    <p></p>
+  </div>
+</div>
+
+<div id="show-btn-container">
+<%= link_to "Create a group!", "#", id:"show-btn" %>
+</div>
+
+
+<div class="footer-space"></div>
+
+<div class="footer-musicmates">
+  <%= link_to "/concerts", class: "icons target", id: "target1" do %>
+    <i class="fa-solid fa-house"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target2" do %>
+    <i class="fa-solid fa-clipboard-list"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target3" do %>
+    <i class="fa-solid fa-envelope"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target4" do %>
+    <i class="fa-solid fa-user"></i>
+  <% end %>
+</div>

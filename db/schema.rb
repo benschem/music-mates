@@ -46,12 +46,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_060013) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "image_url"
+    t.string "spotify_link"
   end
 
   create_table "chatrooms", force: :cascade do |t|
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["group_id"], name: "index_chatrooms_on_group_id"
   end
 
@@ -85,7 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_060013) do
   create_table "invitations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_invitations_on_group_id"
@@ -97,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_060013) do
     t.bigint "chatroom_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content"
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -121,6 +125,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_060013) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
