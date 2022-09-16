@@ -12,15 +12,28 @@
 
 .footer-space {
   height: 50px;
+  width: 100%;
   background-color: white;
   bottom: 0px;
   position: absolute;
 }
 
 #concert-index-footer {
-  height: 50px;
+  height: 25px;
+  width: 100%;
   background-color: white;
   bottom: 0px;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+#concert-chat-footer {
+  height: 35px;
+  width: 100%;
+  background-color: white;
+  bottom: 0px;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 :target {
