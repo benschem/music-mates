@@ -26,8 +26,8 @@
   }
 
   #landing-btn {
-    background-color: #00e070;
-    border: 1px solid #00e070;
+    background-color: $success;
+    border: 1px solid $success;
     border-radius: 7px;
     color: white;
     text-decoration: none;
@@ -36,9 +36,9 @@
   }
 
   #landing-btn:focus {
-    background-color: #00e070;
+    background-color: $success;
     border: 1px solid white;
     transform: translateY(-0.15em);
-    box-shadow: 0 0.5px 0.5px #00e070;
+    box-shadow: 0 0.5px 0.5px $success;
   }
 }
