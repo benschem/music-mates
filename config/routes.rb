@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :concerts, only: %i[index show] do
     resources :groups, only: %i[create new]
   end
+  resources :groups, only: :index
   resources :groups, only: :show do
     resources :chatrooms, only: %i[show create] do
       resources :messages, only: :create

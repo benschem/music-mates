@@ -32,6 +32,10 @@ class GroupsController < ApplicationController
     @message = Message.new
   end
 
+  def index
+    @groups = Group.joins(:invitations).where('invitations.user_id = ?', current_user.id)
+  end
+
   private
 
   def group_params

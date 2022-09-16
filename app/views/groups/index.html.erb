@@ -1,0 +1,39 @@
+<div class="navbar-space"></div>
+<%= render "shared/navbar" %>
+
+<div class="show">
+  <h1>These are the concerts you're attending!</h1>
+</div>
+
+<% @groups.each do |group| %>
+  <div class="concert-card">
+    <div class="concert-info">
+      <h2><strong><%= group.concert.artist.name %></strong></h2>
+      <p><strong><%= group.concert.date %></strong></p>
+      <p><%= group.concert.venue %>, <%= group.concert.location %></p>
+    </div>
+    <div class="concert-avatars">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+    </div>
+  </div>
+<% end %>
+
+<div class="footer-musicmates">
+  <%= link_to "/concerts", class: "icons target", id: "target1" do %>
+    <i class="fa-solid fa-house"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target2" do %>
+    <i class="fa-solid fa-clipboard-list"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target3" do %>
+    <i class="fa-solid fa-envelope"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target4" do %>
+    <i class="fa-solid fa-user"></i>
+  <% end %>
+</div>
