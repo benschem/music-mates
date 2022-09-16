@@ -2,6 +2,7 @@
 <h1>Hey <%= current_user.first_name %>! You've been invited to these concerts!</h1>
 <% if @invitations.present? %>
 <% @invitations.each do |invite| %>
+  <% if invite.status == "pending" %>
   <% group = invite.group %>
     <%concert =  group.concert %>
     <div class="concert-card">
@@ -21,7 +22,6 @@
       </div>
       <!-- invite.status -->
     <div class="status-buttons">
-    <% if invite.status == "pending" %>
       <div class="btn-accept"><%= link_to "✔️", invitation_path(invite, status: 1), data: { turbo_method: :patch } %></div>
       <div class="btn-decline"><%= link_to "❌", invitation_path(invite, status: 2), data: { turbo_method: :patch } %></div>
     <% end %>
