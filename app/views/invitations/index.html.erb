@@ -1,33 +1,50 @@
-<div class="invitation">
-<h1>Hey <%= current_user.first_name %>! You've been invited to these concerts!</h1>
-<% if @invitations.present? %>
-<% @invitations.each do |invite| %>
-  <% group = invite.group %>
-    <%concert =  group.concert %>
-    <div class="concert-card">
-      <div class="concert-info">
-        <h2><strong><%= concert.artist.name %></strong></h2>
-          <p><strong><%= concert.date %></strong></p>
-          <p><%= concert.venue %>, <%= concert.location %></p>
+<%= render "shared/navbar" %>
+
+<div class="invitation py-5">
+  <h1>Hey <%= current_user.first_name %>! You've been invited to these concerts!</h1>
+  <% if @invitations.present? %>
+  <% @invitations.each do |invite| %>
+    <% group = invite.group %>
+      <%concert =  group.concert %>
+      <div class="concert-card">
+        <div class="concert-info">
+          <h2><strong><%= concert.artist.name %></strong></h2>
+            <p><strong><%= concert.date %></strong></p>
+            <p><%= concert.venue %>, <%= concert.location %></p>
+          </div>
+          <div class="concert-avatars">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          </div>
         </div>
-        <div class="concert-avatars">
-          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        </div>
+        <!-- invite.status -->
+      <div class="status-buttons">
+      <% if invite.status == "pending" %>
+        <div class="btn-accept"><%= link_to "✔️", invitation_path(invite, status: 1), data: { turbo_method: :patch } %></div>
+        <div class="btn-decline"><%= link_to "❌", invitation_path(invite, status: 2), data: { turbo_method: :patch } %></div>
+      <% end %>
       </div>
-      <!-- invite.status -->
-    <div class="status-buttons">
-    <% if invite.status == "pending" %>
-      <div class="btn-accept"><%= link_to "✔️", invitation_path(invite, status: 1), data: { turbo_method: :patch } %></div>
-      <div class="btn-decline"><%= link_to "❌", invitation_path(invite, status: 2), data: { turbo_method: :patch } %></div>
     <% end %>
-    </div>
+  <% else %>
+    <p>No invites D;</p>
   <% end %>
-<% else %>
-  <p>No invites D;</p>
-<% end %>
+</div>
+
+<div class="footer-musicmates">
+  <%= link_to "/concerts", class: "icons target", id: "target1" do %>
+    <i class="fa-solid fa-house"></i>
+  <% end %>
+  <%= link_to "/groups", class: "icons target", id: "target2" do %>
+    <i class="fa-solid fa-clipboard-list"></i>
+  <% end %>
+  <%= link_to "/invitations", class: "icons target", id: "target3" do %>
+    <i class="fa-solid fa-envelope text-success"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target4" do %>
+    <i class="fa-solid fa-user"></i>
+  <% end %>
 </div>
