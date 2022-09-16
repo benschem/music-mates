@@ -39,3 +39,12 @@
     <i class="fa-solid fa-user"></i>
   <% end %>
 </div>
+
+<%= form_with url: _path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search for your friends"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>

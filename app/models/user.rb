@@ -17,6 +17,13 @@ class User < ApplicationRecord
   validates :location, presence: true
   validates :first_name, presence: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+    against: [ :first_name, :last_name ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def self.from_omniauth(auth)
     this_user = User.where(email: auth.extra.raw_info.email).first_or_create do |user|
       p user
