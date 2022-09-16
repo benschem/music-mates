@@ -19,8 +19,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   include PgSearch::Model
-  pg_search_scope :search_by_username,
-    against: [ :username],
+  pg_search_scope :search_by_name,
+    against: [ :first_name, :last_name ],
     using: {
       tsearch: { prefix: true }
     }

@@ -1,6 +1,7 @@
 <h1><%= @concert.artist.name %></h1>
 <div class="friend-list">
   <h2>Your Friends</h2>
+  <div class="search-bar">
   <div class="create-group">
     <%= simple_form_for [@concert, @group] do |f| %>
       <ul>
