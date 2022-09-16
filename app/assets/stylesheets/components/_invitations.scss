@@ -1,0 +1,62 @@
+.invitation {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    text-align: center;
+    color: #2b3a67;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14;
+  }
+  h4 {
+    text-align: center;
+    font-size: 14px;
+  }
+  .status-buttons {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+  white-space: normal;
+  align-items: center;
+  width: 300px;
+  .btn-accept {
+    background-color: #00e070;
+    border: 1px solid #00e070;
+    border-radius: 7px;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: 0.02s;
+    text-align: center;
+    width: 100px;
+    margin: auto;
+  }
+  .btn-accept:focus {
+    background-color: #2b3a67;
+    border: 1px solid white;
+    transform: translateY(-0.15em);
+    box-shadow: 0 0.5px 0.5px #00e070;
+  }
+  .btn-decline{
+    background-color: #2b3a67;
+    border: 1px solid #2b3a67;
+    border-radius: 7px;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: 0.02s;
+    text-align: center;
+    width: 100px;
+    margin: auto;
+  }
+  .btn-decline:focus{
+    background-color: lightcoral;
+    border: 1px solid white;
+    transform: translateY(-0.15em);
+    box-shadow: 0 0.5px 0.5px #00e070;
+  }
+}
+}

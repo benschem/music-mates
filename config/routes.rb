@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: "pages#landing"
 
@@ -17,5 +16,5 @@ Rails.application.routes.draw do
     end
   end
   # group_id/chatroom
-  resources :invitations, only: %i[index]
+  resources :invitations, only: %i[index update]
 end
