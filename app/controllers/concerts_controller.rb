@@ -1,26 +1,38 @@
+require "erb"
+include ERB::Util
+
 class ConcertsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
 
   def index
-    @concerts = Concert.all
-    # @concerts = HTTParty.get("https://rest.bandsintown.com/artists/The%20Jezabels/events?app_id=#{ENV["BANDS_IN_TOWN_KEY"]}&date=upcoming")
-    # raise
-    # current_user.artists.each do |artist|
-    #   endpoint = HTTParty.get("https://rest.bandsintown.com/artists/#{artist.name}/events?app_id=5527da5d886f6cccbb484474f7b50f5d&date=upcoming")
-    #   Concert.first_or_create(artist: artist, date: DateTime.parse(endpoint[0]["datetime"])) do |artist|
-    #     artist: artist,
-    #     date: DateTime.parse(endpoint[0]["datetime"])
-    #     location: TODO
-    #     description: Rails::Html::FullSanitizer.new.sanitize(@concerts[0]["description"])
-    #     venue: TODO
-    #   end
-    # end
-    # @concerts = current_user.concerts
+    current_user.artists.each do |artist|
+      concerts = concerts_from_API_for(artist)
+      concerts.each do |concert|
+        create_concert_unless_it_already_exists(concert, artist)
+      end
+    end
+    @concerts = current_user.concerts
   end
 
   def show
     @concert = Concert.find(params[:id])
   end
 
+  private
+
+  def concerts_from_API_for(artist)
+    HTTParty.get("https://rest.bandsintown.com/artists/#{url_encode(artist.name)}/events?app_id=#{ENV["BANDS_IN_TOWN_KEY"]}&date=upcoming")
+    # returns array of concert objects
+  end
+
+  def  create_concert_unless_it_already_exists(concert, artist)
+    Concert.where(artist: artist, date: DateTime.parse(concert["datetime"])).first_or_create(
+      artist: artist,
+      date: DateTime.parse(concert["datetime"]),
+      location: concert["venue"]["location"],
+      description: Rails::Html::FullSanitizer.new.sanitize(concert["description"]),
+      venue: concert["venue"]["name"]
+    )
+  end
 
 end
