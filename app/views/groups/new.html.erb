@@ -6,7 +6,7 @@
     <%= simple_form_for [@concert, @group] do |f| %>
       <ul>
         <% @users.each do |user| %>
-        <li><%= user.first_name + " " + user.last_name %> <%= check_box_tag 'user_ids[]', user.id -%></li>
+        <li><%= user.first_name %> <%= check_box_tag 'user_ids[]', user.id -%></li>
         <% end %>
       </ul>
       <%= f.submit "Let's Go!", class: "btn" %>

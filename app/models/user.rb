@@ -10,13 +10,12 @@ class User < ApplicationRecord
   has_many :groups, through: :invitations
   has_many :follows, dependent: :destroy
   has_many :artists, through: :follows
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   has_one_attached :photo
 
   validates :location, presence: true
   validates :first_name, presence: true
-  validates :last_name, presence: true
 
   include PgSearch::Model
   pg_search_scope :search_by_name,
@@ -27,6 +26,7 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     this_user = User.where(email: auth.extra.raw_info.email).first_or_create do |user|
+      p user
       user.first_name = auth.info.name.split[0]
       user.last_name = auth.info.name.split[1]
       user.location = auth.info.country_code
@@ -34,6 +34,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
       user.avatar = auth.info.image
+      p user
     end
 
     # this_user.token = auth.credentials.token => uncomment this if we need to call Spotify API elsewhere in the app
