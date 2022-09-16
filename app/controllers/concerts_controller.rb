@@ -1,8 +1,9 @@
 class ConcertsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home index]
+  skip_before_action :authenticate_user!, only: %i[home]
 
   def index
     @concerts = Concert.all
+
   end
 
   def show
