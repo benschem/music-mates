@@ -1,52 +1,29 @@
-<div class="navbar-space"></div>
-<%= render "shared/navbar" %>
+<div id="page-container">
+  <%= render "shared/navbar" %>
 
-<div class="search">
-  <%= render "shared/search-bar" %>
-</div>
+  <div class="search">
+    <%= render "shared/search-bar" %>
+  </div>
 
-<% @concerts.each do |concert| %>
-  <%= link_to concert_path(concert) do %>
-    <div class="concert-card">
-      <div class="concert-info">
-        <h2><strong><%= concert.artist.name %></strong></h2>
-        <p><strong><%= concert.date %></strong></p>
-        <p><%= concert.venue %>, <%= concert.location %></p>
+  <% @concerts.each do |concert| %>
+    <%= link_to concert_path(concert) do %>
+      <div class="concert-card">
+        <div class="concert-info">
+          <h2><strong><%= concert.artist.name %></strong></h2>
+          <p><strong><%= concert.date %></strong></p>
+          <p><%= concert.venue %>, <%= concert.location %></p>
+        </div>
+        <div class="concert-avatars">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+        </div>
       </div>
-      <div class="concert-avatars">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-      </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<div id="concert-index-footer"></div>
 
-<div class="footer-musicmates">
-  <%= link_to "/concerts", class: "icons target", id: "target1" do %>
-    <i class="fa-solid fa-house text-success"></i>
-  <% end %>
-  <%= link_to "/groups", class: "icons target", id: "target2" do %>
-    <i class="fa-solid fa-clipboard-list"></i>
-  <% end %>
-  <%= link_to "/invitations", class: "icons target", id: "target3" do %>
-    <i class="fa-solid fa-envelope"></i>
-  <% end %>
-  <%= link_to "/concerts", class: "icons target", id: "target4" do %>
-    <i class="fa-solid fa-user"></i>
-  <% end %>
 </div>
-
-<%# <%= form_with url: _path, method: :get, class: "d-flex" do %> %>
-  <%# <%= text_field_tag :query, %>
-    <%# params[:query], %>
-    <%# # class: "form-control", %>
-    <%# # placeholder: "Search for your friends" %>
-  <%# # %> %>
-  <%# <%= submit_tag "Search", class: "btn btn-primary" %> %>
-<%# <% end %> %>
