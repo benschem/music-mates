@@ -10,7 +10,7 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Invite your friends!"
+      placeholder: "Invite your mates!"
     %>
     <button name="button" type="submit" class="btn btn-flat">
       <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
@@ -21,7 +21,8 @@
   <div class="create-group">
     <%= simple_form_for [@concert, @group] do |f| %>
         <% @users.each do |user| %>
-        <div class="friends-invite"> <div class="avatar-name"> <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar" id="group-avatar"> <%= user.first_name %> </div>
+        <% next if user == current_user  %>
+        <div class="friends-invite"> <div class="avatar-name"> <img src="<%= user.avatar %>" class="avatar" id="group-avatar"> <%= user.first_name %> </div>
         <%= check_box_tag 'user_ids[]', user.id %></div>
         <% end %>
       <%= f.submit "Make a group!", id: "group-btn" %>

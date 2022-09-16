@@ -13,13 +13,22 @@
         <p><strong><%= concert.date %></strong></p>
         <p><%= concert.venue %>, <%= concert.location %></p>
       </div>
+   <% follows = concert.artist.follows %>
+   <% userfollow = [] %>
       <div class="concert-avatars">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+        <% follows.each_with_index do |f, i|%>
+          <% break if i == 4 || i == nil %>
+          <% @users.each_with_index do |user, i| %>
+            <% if (i != 4 || i != nil) && (user == f.user) %>
+              <% userfollow << user %>
+              <img src="<%= user.avatar %>" class="avatar">
+            <% end %>
+            <% if userfollow.count > 5 %>
+              <!-- Show a number that is userfollow - 5 -->
+              <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>
