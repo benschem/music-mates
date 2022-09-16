@@ -1,17 +1,49 @@
-<h1><%= @concert.artist.name %></h1>
+<div class="navbar-space"></div>
+<%= render "shared/navbar" %>
+
+<h1 id="group-new-h1"><%= @concert.artist.name %></h1>
+
 <div class="friend-list">
-  <h2>Your Friends</h2>
-  <div class="search-bar">
-  <div class="create-group">
-    <%= simple_form_for [@concert, @group] do |f| %>
-      <ul>
-        <% @users.each do |user| %>
-        <li><%= user.first_name %> <%= check_box_tag 'user_ids[]', user.id -%></li>
-        <% end %>
-      </ul>
-      <%= f.submit "Let's Go!", class: "btn" %>
+
+  <div class="search">
+    <%= form_with url: concerts_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Invite your friends!"
+    %>
+    <button name="button" type="submit" class="btn btn-flat">
+      <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
+    </button>
     <% end %>
   </div>
+
+  <div class="create-group">
+    <%= simple_form_for [@concert, @group] do |f| %>
+        <% @users.each do |user| %>
+        <div class="friends-invite"> <div class="avatar-name"> <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar" id="group-avatar"> <%= user.first_name %> </div>
+        <%= check_box_tag 'user_ids[]', user.id %></div>
+        <% end %>
+      <%= f.submit "Make a group!", id: "group-btn" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="footer-space"></div>
+
+<div class="footer-musicmates">
+  <%= link_to "/concerts", class: "icons target", id: "target1" do %>
+    <i class="fa-solid fa-house"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target2" do %>
+    <i class="fa-solid fa-clipboard-list"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target3" do %>
+    <i class="fa-solid fa-envelope"></i>
+  <% end %>
+  <%= link_to "/concerts", class: "icons target", id: "target4" do %>
+    <i class="fa-solid fa-user"></i>
+  <% end %>
 </div>
 
 <!--
