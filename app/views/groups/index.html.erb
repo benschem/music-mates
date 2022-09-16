@@ -5,22 +5,28 @@
   <h1>These are the concerts you're attending!</h1>
 </div>
 
-<% @groups.each do |group| %>
-  <div class="concert-card">
-    <div class="concert-info">
-      <h2><strong><%= group.concert.artist.name %></strong></h2>
-      <p><strong><%= group.concert.date %></strong></p>
-      <p><%= group.concert.venue %>, <%= group.concert.location %></p>
-    </div>
-    <div class="concert-avatars">
-      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-      <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-    </div>
-  </div>
+<% if @groups.count >= 1 %>
+  <% @groups.each do |group| %>
+    <%= link_to group_path(group) do %>
+      <div class="concert-card">
+        <div class="concert-info">
+          <h2><strong><%= group.concert.artist.name %></strong></h2>
+          <p><strong><%= group.concert.date %></strong></p>
+          <p><%= group.concert.venue %>, <%= group.concert.location %></p>
+        </div>
+        <div class="concert-avatars">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>You're not attending any concerts yet!</p>
 <% end %>
 
 <div class="footer-musicmates">
