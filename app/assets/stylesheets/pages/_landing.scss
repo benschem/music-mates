@@ -42,11 +42,13 @@
     text-decoration: none;
     padding: 8px 12px;
     transition: 0.02s;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
   }
 
   #landing-btn:focus {
     background-color: $success;
     border: 2px solid white;
     transform: scale(1.02);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
   }
 }

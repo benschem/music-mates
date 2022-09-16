@@ -7,7 +7,14 @@
 
 #page-container-concertshow {
   position: relative;
-  min-height: 100vh;
-  margin-top: 66px;
+  min-height: calc(100vh - 130px);
   margin-bottom: 64px;
+  margin-top: 66px;
+}
+
+#page-container-groups {
+  position: relative;
+  min-height: calc(100vh - 144px);
+  margin-bottom: 64px;
+  margin-top: 80px;
 }

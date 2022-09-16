@@ -35,10 +35,10 @@
     transition: 0.02s;
   }
 
-  #landing-btn:focus {
+  #landing-btn:active {
     background-color: $success;
     border: 1px solid white;
     transform: translateY(-0.15em);
-    box-shadow: 0 0.5px 0.5px $success;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
   }
 }
