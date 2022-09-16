@@ -12,7 +12,7 @@
   h5 {
     margin-top: 13px;
     font-size: 11px;
-    color:#00e070;
+    color:$success;
   }
 
   img {
@@ -35,8 +35,8 @@
   }
 
   #landing-btn {
-    background-color: #00e070;
-    border: 1px solid #00e070;
+    background-color: $success;
+    border: 1px solid $success;
     border-radius: 7px;
     color: white;
     text-decoration: none;
@@ -45,7 +45,7 @@
   }
 
   #landing-btn:focus {
-    background-color: #00e070;
+    background-color: $success;
     border: 2px solid white;
     transform: scale(1.02);
   }

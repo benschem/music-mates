@@ -36,8 +36,8 @@
   #group-btn {
     margin: 0 auto;
     margin-top: 10px;
-    background-color: #00e070;
-    border: 1px solid #00e070;
+    background-color: $success;
+    border: 1px solid $success;
     border-radius: 7px;
     color: white;
     text-decoration: none;
@@ -47,7 +47,7 @@
   }
 
   #group-btn:active {
-    background-color: #00e070;
+    background-color: $success;
     border: 2px solid white;
     transform: scale(1.02);
   }
