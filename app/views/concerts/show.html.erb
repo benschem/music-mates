@@ -33,6 +33,11 @@
         <h3>might be going</h3>
       </div>
     </div>
+
+    <div class="show-detail">
+      <h2><%= pluralize(@users.count, 'mate') %></h2>
+      <h3>might be interested</h3>
+
     <div class="show-desc">
       <p><%= @concert.description %></p>
       <p></p>
