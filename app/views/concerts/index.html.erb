@@ -1,9 +1,9 @@
-<div class="navbar-space"></div>
-<%= render "shared/navbar" %>
+<div id="page-container">
+  <%= render "shared/navbar" %>
 
-<div class="search">
-  <%= render "shared/search-bar" %>
-</div>
+  <div class="search">
+    <%= render "shared/search-bar" %>
+  </div>
 
 <% @concerts.each do |concert| %>
   <%= link_to concert_path(concert) do %>
@@ -30,32 +30,6 @@
           <% end %>
         <% end %>
       </div>
-    </div>
-  <% end %>
-<% end %>
-
-<div id="concert-index-footer"></div>
-
-<div class="footer-musicmates">
-  <%= link_to "/concerts", class: "icons target", id: "target1" do %>
-    <i class="fa-solid fa-house text-success"></i>
-  <% end %>
-  <%= link_to "/groups", class: "icons target", id: "target2" do %>
-    <i class="fa-solid fa-clipboard-list"></i>
-  <% end %>
-  <%= link_to "/invitations", class: "icons target", id: "target3" do %>
-    <i class="fa-solid fa-envelope"></i>
-  <% end %>
-  <%= link_to "/concerts", class: "icons target", id: "target4" do %>
-    <i class="fa-solid fa-user"></i>
+    <% end %>
   <% end %>
 </div>
-
-<%# <%= form_with url: _path, method: :get, class: "d-flex" do %> %>
-  <%# <%= text_field_tag :query, %>
-    <%# params[:query], %>
-    <%# # class: "form-control", %>
-    <%# # placeholder: "Search for your friends" %>
-  <%# # %> %>
-  <%# <%= submit_tag "Search", class: "btn btn-primary" %> %>
-<%# <% end %> %>
