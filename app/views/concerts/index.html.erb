@@ -7,7 +7,7 @@
 
 <% @concerts.each do |concert| %>
   <%= link_to concert_path(concert) do %>
-    <div class="concert-card">
+    <div class="concert-card" style="background-image: linear-gradient(black, black), url(<%= concert.artist.image_url %>)">
       <div class="concert-info">
         <h2><strong><%= concert.artist.name %></strong></h2>
         <p><strong><%= concert.date %></strong></p>
