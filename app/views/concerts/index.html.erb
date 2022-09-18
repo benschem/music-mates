@@ -5,7 +5,7 @@
     <%= render "shared/search-bar" %>
   </div>
 
-<% @concerts.each do |concert| %>
+  <% @concerts.each do |concert| %>
   <%= link_to concert_path(concert) do %>
     <div class="concert-card" style="background-image: linear-gradient(black, black), url(<%= concert.artist.image_url %>)">
       <div class="concert-info">
@@ -13,8 +13,8 @@
         <p><strong><%= concert.date %></strong></p>
         <p><%= concert.venue %>, <%= concert.location %></p>
       </div>
-   <% follows = concert.artist.follows %>
-   <% userfollow = [] %>
+      <% follows = concert.artist.follows %>
+      <% userfollow = [] %>
       <div class="concert-avatars">
         <% follows.each_with_index do |f, i|%>
           <% break if i == 4 || i == nil %>
@@ -31,5 +31,6 @@
         <% end %>
       </div>
     <% end %>
+    </div>
   <% end %>
 </div>
