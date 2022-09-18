@@ -1,0 +1,14 @@
+  <div class="footer-musicmates">
+    <%= link_to "/concerts", class: "icons target", id: "target1" do %>
+      <i class="fa-solid fa-house <%= iscurrentpage?("concerts") %>"></i>
+    <% end %>
+    <%= link_to "/groups", class: "icons target", id: "target2" do %>
+      <i class="fa-solid fa-clipboard-list <%= iscurrentpage?("groups") %>"></i>
+    <% end %>
+    <%= link_to "/invitations", class: "icons target", id: "target3" do %>
+      <i class="fa-solid fa-envelope <%= iscurrentpage?("invitations") %>"></i>
+    <% end %>
+    <%= link_to "/concerts", class: "icons target", id: "target4" do %>
+      <i class="fa-solid fa-user <%= iscurrentpage?("concerts") %>"></i>
+    <% end %>
+  </div>

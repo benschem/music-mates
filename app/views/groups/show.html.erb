@@ -1,39 +1,25 @@
-<div class="navbar-space"></div>
-<%= render "shared/navbar" %>
+<div id="page-container">
 
-Hello?
-<%= @concert %>
-<%= @group %>
+  <%= render "shared/navbar" %>
 
-<div class="concert-card">
-  <div class="concert-info">
-    <h2><strong><%= @concert.artist.name %></strong></h2>
-    <p><strong><%= @concert.date %></strong></p>
-    <p><%= @concert.venue %>, <%= @concert.location %></p>
+  Hello?
+  <%= @concert %>
+  <%= @group %>
+
+  <div class="concert-card">
+    <div class="concert-info">
+      <h2><strong><%= @concert.artist.name %></strong></h2>
+      <p><strong><%= @concert.date %></strong></p>
+      <p><%= @concert.venue %>, <%= @concert.location %></p>
+    </div>
   </div>
-</div>
 
-<div class="friend-list">
-<!-- Friends go here! -->
-</div>
+  <div class="friend-list">
+  <!-- Friends go here! -->
+  </div>
 
-<div class="chatbox">
-  <%= render "chatrooms/chatbox", chatroom: @chatroom, message: @message, group: @group %>
-</div>
+  <div class="chatbox">
+    <%= render "chatrooms/chatbox", chatroom: @chatroom, message: @message, group: @group %>
+  </div>
 
-<div id="concert-chat-footer"></div>
-
-<div class="footer-musicmates">
-  <%= link_to "/concerts", class: "icons target", id: "target1" do %>
-    <i class="fa-solid fa-house"></i>
-  <% end %>
-  <%= link_to "/groups", class: "icons target", id: "target2" do %>
-    <i class="fa-solid fa-clipboard-list text-success"></i>
-  <% end %>
-  <%= link_to "/invitations", class: "icons target", id: "target3" do %>
-    <i class="fa-solid fa-envelope"></i>
-  <% end %>
-  <%= link_to "/concerts", class: "icons target", id: "target4" do %>
-    <i class="fa-solid fa-user"></i>
-  <% end %>
 </div>

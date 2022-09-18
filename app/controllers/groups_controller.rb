@@ -10,8 +10,10 @@ class GroupsController < ApplicationController
         user: user
       }
     end
+    invitations << {group: @group, user: current_user}
     if @group.save
       Invitation.create(invitations)
+      current_user.invitations.last.status = "accepted"
       Chatroom.create(group: @group, name: @concert.artist.name)
       redirect_to group_path(@group)
     else
@@ -20,9 +22,11 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @users = User.all
     @concert = Concert.find(params[:concert_id])
     @group = Group.new
+    @follows = @concert.artist.follows
+    @users = [] # replace this with search
+    @follows.each { |f| @users << f.user}
   end
 
   def show

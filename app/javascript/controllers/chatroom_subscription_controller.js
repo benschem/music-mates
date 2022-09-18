@@ -10,8 +10,7 @@ export default class extends Controller {
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
-
-    console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`)
+    // console.log(`Subscribed To The chatroom with the id ${this.chatroomIdValue}.`)
   }
   disconnect() {
     console.log("Unsubscribed from the chatroom")
@@ -20,10 +19,10 @@ export default class extends Controller {
   // # = JS's private
   #insertMessageAndScrollDown(data) {
     // Logic to know if the sender is the current_user
+
     const currentUserIsSender = this.currentUserIdValue === data.sender_id
 
     // Creating the whole message from the `data.message` String
-    console.log(data)
     const messageElement = this.#buildMessageElement(currentUserIsSender, data.message)
 
     // Inserting the `message` in the DOM

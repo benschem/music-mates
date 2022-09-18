@@ -1,9 +1,9 @@
-<div class="navbar-space"></div>
-<%= render "shared/navbar" %>
+<div id="page-container">
+  <%= render "shared/navbar" %>
 
-<div class="search">
-  <%= render "shared/search-bar" %>
-</div>
+  <div class="search">
+    <%= render "shared/search-bar" %>
+  </div>
 
 <% @concerts.each do |concert| %>
   <%= link_to concert_path(concert) do %>
@@ -13,40 +13,23 @@
         <p><strong><%= concert.date %></strong></p>
         <p><%= concert.venue %>, <%= concert.location %></p>
       </div>
+   <% follows = concert.artist.follows %>
+   <% userfollow = [] %>
       <div class="concert-avatars">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-        <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+        <% follows.each_with_index do |f, i|%>
+          <% break if i == 4 || i == nil %>
+          <% @users.each_with_index do |user, i| %>
+            <% if (i != 4 || i != nil) && (user == f.user) %>
+              <% userfollow << user %>
+              <img src="<%= user.avatar %>" class="avatar">
+            <% end %>
+            <% if userfollow.count > 5 %>
+              <!-- Show a number that is userfollow - 5 -->
+              <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
-    </div>
-  <% end %>
-<% end %>
-
-<div id="concert-index-footer"></div>
-
-<div class="footer-musicmates">
-  <%= link_to "/concerts", class: "icons target", id: "target1" do %>
-    <i class="fa-solid fa-house text-success"></i>
-  <% end %>
-  <%= link_to "/groups", class: "icons target", id: "target2" do %>
-    <i class="fa-solid fa-clipboard-list"></i>
-  <% end %>
-  <%= link_to "/invitations", class: "icons target", id: "target3" do %>
-    <i class="fa-solid fa-envelope"></i>
-  <% end %>
-  <%= link_to "/concerts", class: "icons target", id: "target4" do %>
-    <i class="fa-solid fa-user"></i>
+    <% end %>
   <% end %>
 </div>
-
-<%# <%= form_with url: _path, method: :get, class: "d-flex" do %> %>
-  <%# <%= text_field_tag :query, %>
-    <%# params[:query], %>
-    <%# # class: "form-control", %>
-    <%# # placeholder: "Search for your friends" %>
-  <%# # %> %>
-  <%# <%= submit_tag "Search", class: "btn btn-primary" %> %>
-<%# <% end %> %>

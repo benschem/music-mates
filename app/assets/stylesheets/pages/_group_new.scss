@@ -25,7 +25,7 @@
     padding: 7px 10px;
     color: white;
     background-color: #2B3A67;
-    box-shadow: 1px 1px lightgrey;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
   }
 
   #group-avatar {
@@ -43,7 +43,7 @@
     text-decoration: none;
     padding: 8px 15px;
     transition: 0.02s;
-    box-shadow: 1px 1px lightgrey;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
   }
 
   #group-btn:active {

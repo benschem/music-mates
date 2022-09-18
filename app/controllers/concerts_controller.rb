@@ -12,10 +12,14 @@ class ConcertsController < ApplicationController
       end
     end
     @concerts = current_user.concerts
+    @users = User.all
   end
 
   def show
     @concert = Concert.find(params[:id])
+    @follows = @concert.artist.follows
+    @users = [] # replace this with search
+    @follows.each { |f| @users << f.user}
   end
 
   private
