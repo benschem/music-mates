@@ -1,4 +1,5 @@
 require "json"
+require "open-uri"
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -36,8 +37,9 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
-      user.avatar = auth.info.image
-      p user
+      # user.avatar = auth.info.image
+      file = URI.open(auth.info.image)
+      user.photo.attach(io: file, filename: "#{auth.info.name}.jpg", content_type: "image/png")
     end
 
     # this_user.token = auth.credentials.token => uncomment this if we need to call Spotify API elsewhere in the app
@@ -48,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def get_top_artists(token)
-    url = "https://api.spotify.com/v1/me/top/artists"
+    url = "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=50"
     endpoint = HTTParty.get(url, headers: {
       'Content-Type': "application/json",
       Authorization: "Bearer #{token}"
