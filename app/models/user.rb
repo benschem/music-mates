@@ -34,8 +34,8 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
-      user.avatar = auth.info.image
-      p user
+      # user.avatar = auth.info.image
+      user.photo.attach(io: auth.info.image, filename: "avatar.jpg", content_type: "image/png")
     end
 
     # this_user.token = auth.credentials.token => uncomment this if we need to call Spotify API elsewhere in the app
