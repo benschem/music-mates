@@ -15,7 +15,7 @@
 
         <div class="concert-info">
           <h2><strong><%= concert.artist.name %></strong></h2>
-          <p><strong><%= concert.date %></strong></p>
+          <p><strong><%= concert.date.strftime("%A %e %B %Y") %></strong></p>
           <p><%= concert.venue %>, <%= concert.location %></p>
         </div>
         <% follows = concert.artist.follows %>
