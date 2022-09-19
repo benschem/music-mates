@@ -20,17 +20,11 @@ class ConcertsController < ApplicationController
       @concerts = Concert.joins(:artist).where(sql_query, query: "%#{params[:query]}%")
     else
       @concerts = current_user.concerts
-      # @concerts = current_user.concerts
     end
-    
-    @users = User.all
   end
 
   def show
     @concert = Concert.find(params[:id])
-    @follows = @concert.artist.follows
-    @users = [] # replace this with search
-    @follows.each { |f| @users << f.user }
   end
 
   private
