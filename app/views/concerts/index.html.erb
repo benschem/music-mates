@@ -6,31 +6,37 @@
   </div>
 
   <% @concerts.each do |concert| %>
-  <%= link_to concert_path(concert) do %>
-    <div class="concert-card" style="background-image: linear-gradient(black, black), url(<%= concert.artist.image_url %>)">
-      <div class="concert-info">
-        <h2><strong><%= concert.artist.name %></strong></h2>
-        <p><strong><%= concert.date %></strong></p>
-        <p><%= concert.venue %>, <%= concert.location %></p>
-      </div>
-      <% follows = concert.artist.follows %>
-      <% userfollow = [] %>
-      <div class="concert-avatars">
-        <% follows.each_with_index do |f, i|%>
-          <% break if i == 4 || i == nil %>
-          <% @users.each_with_index do |user, i| %>
-            <% if (i != 4 || i != nil) && (user == f.user) %>
-              <% userfollow << user %>
-              <img src="<%= user.avatar %>" class="avatar">
-            <% end %>
-            <% if userfollow.count > 5 %>
-              <!-- Show a number that is userfollow - 5 -->
-              <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+
+    <%= link_to concert_path(concert), class: "concert-a" do %>
+      <div class="concert-card">
+
+        <div class="img-grey" style="background-image: url(<%= concert.artist.image_url %>)"></div>
+
+        <div class="img-gradient"></div>
+
+        <div class="concert-info">
+          <h2><strong><%= concert.artist.name %></strong></h2>
+          <p><strong><%= concert.date %></strong></p>
+          <p><%= concert.venue %>, <%= concert.location %></p>
+        </div>
+        <% follows = concert.artist.follows %>
+        <% userfollow = [] %>
+        <div class="concert-avatars">
+          <% follows.each_with_index do |f, i|%>
+            <% break if i == 4 || i == nil %>
+            <% @users.each_with_index do |user, i| %>
+              <% if (i != 4 || i != nil) && (user == f.user) %>
+                <% userfollow << user %>
+                <img src="<%= user.avatar %>" class="avatar">
+              <% end %>
+              <% if userfollow.count > 5 %>
+                <!-- Show a number that is userfollow - 5 -->
+                <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     <% end %>
-    </div>
   <% end %>
 </div>
