@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
+  scope :without_me, ->(user) { where.not(id: user.id) }
+
   validates :location, presence: true
   validates :first_name, presence: true
 

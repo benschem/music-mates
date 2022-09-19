@@ -1,10 +1,8 @@
 <div class="navbar-space"></div>
 <%= render "shared/navbar" %>
 <h1><%= @chatroom.name %></h1>
-<div class="chatbox-container"></div>
+<div class="chatbox-show">
   <%= render "chatbox", chatroom: @chatroom, message: @message, group: @group %>
 </div>
 
 <!-- HEROKU needs to install redis. Check the lecture notes on Chat-->
-
-</div>

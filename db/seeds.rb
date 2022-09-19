@@ -31,16 +31,16 @@ location = ["Melbourne", "Canberra", "Brisbane", "Hobart", "Sydney"]
 venue = ["MCG", "The Pub", "Your Backyard", "Sydney Opera House", "McDonald's"]
 
 # should use real artists
-5.times do
+artists = []
+10.times do
   a = Artist.create(
     name: Faker::Music.band,
     image_url: "https://imgs.smoothradio.com/images/191589?width=1200&crop=16_9&signature=GRazrMVlAISqkcXrrNA6ku356R0=",
     spotify_link: "https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt"
   )
   puts "Created #{a.name}"
+  artists << a
 end
-
-artists = Artist.all
 
 # should use real concerts
 6.times do
@@ -83,10 +83,16 @@ hunter = User.create(
 )
 puts "#{hunter.first_name} has been born!"
 
-follow = Follow.create(
-  artist: Artist.first,
-  user: hunter
-)
+5.times do
+  a = artists.sample
+  a = artists.sample while hunter.artists.include?(a)
+
+  Follow.create!(
+    artist: a,
+    user: hunter
+  )
+  puts "#{hunter.first_name} follows #{a.name}!"
+end
 
 group = Group.create(
   concert: Concert.first
@@ -103,5 +109,5 @@ chatroom = Chatroom.create(
   name: "Shark Club"
 )
 puts "\n"
-puts "#{hunter.first_name} follows #{follow.artist.name}!"
+
 puts "Done!"

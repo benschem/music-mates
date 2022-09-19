@@ -5,14 +5,21 @@ class ConcertsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
 
   def index
-    current_user.artists.each do |artist|
-      concerts = concerts_from_API_for(artist)
-      concerts.each do |concert|
-        create_concert_unless_it_already_exists(concert, artist)
-      end
-    end
-    @concerts = current_user.concerts
-    @users = User.all
+    # current_user.artists.each do |artist|
+    #   concerts = concerts_from_API_for(artist)
+    #   concerts.each do |concert|
+    #     create_concert_unless_it_already_exists(concert, artist)
+    #   end
+    # end
+    @concerts = current_user.concerts # Testing purposes only!
+
+    # follows = current user's
+
+    # sql_query = "title ILIKE :query OR synopsis ILIKE :query"
+    # @movies = Movie.where(sql_query, query: "%#{params[:query]}%")
+
+    # @concerts = current_user.concerts
+    # @users = User.all
   end
 
   def show

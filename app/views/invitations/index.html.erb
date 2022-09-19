@@ -8,7 +8,7 @@
       <% @invitations.each do |invite| %>
         <% if invite.status == "pending" %>
           <% group = invite.group %>
-          <%concert =  group.concert %>
+          <% concert =  group.concert %>
           <div class="concert-card">
             <div class="concert-info">
               <h2><strong><%= concert.artist.name %></strong></h2>
@@ -29,10 +29,14 @@
             <div class="btn-accept"><%= link_to "accept", invitation_path(invite, status: 1), data: { turbo_method: :patch } %></div>
             <div class="btn-decline"><%= link_to "decline", invitation_path(invite, status: 2), data: { turbo_method: :patch } %></div>
           </div>
+          <% else %>
+           <% group = invite.group %>
+          <% concert =  group.concert %>
+            <p>You've <%= invite.status %> the invitation for <%= concert.artist.name %></p>
         <% end %>
       <% end %>
     <% else %>
-        <p>No invites D;</p>
+      <p>You have not been invited D;</p>
     <% end %>
   </div>
 

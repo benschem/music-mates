@@ -10,27 +10,19 @@
     <div class="concert-card" style="background-image: linear-gradient(black, black), url(<%= concert.artist.image_url %>)">
       <div class="concert-info">
         <h2><strong><%= concert.artist.name %></strong></h2>
-        <p><strong><%= concert.date %></strong></p>
+        <p><strong><%= concert.date.strftime("%A %e %B %Y") %></strong></p>
         <p><%= concert.venue %>, <%= concert.location %></p>
       </div>
-      <% follows = concert.artist.follows %>
-      <% userfollow = [] %>
       <div class="concert-avatars">
-        <% follows.each_with_index do |f, i|%>
-          <% break if i == 4 || i == nil %>
-          <% @users.each_with_index do |user, i| %>
-            <% if (i != 4 || i != nil) && (user == f.user) %>
-              <% userfollow << user %>
-              <img src="<%= user.avatar %>" class="avatar">
-            <% end %>
-            <% if userfollow.count > 5 %>
-              <!-- Show a number that is userfollow - 5 -->
-              <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-            <% end %>
-          <% end %>
+      <% concert.users.without_me(current_user).first(5).each do |user|%>
+          <img src="<%= user.avatar %>" class="avatar">
+        <% end %>
+        <% if concert.users.count > 5 %>
+          <!--  userfollow - 5 -->
+          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
         <% end %>
       </div>
-    <% end %>
     </div>
+    <% end %>
   <% end %>
 </div>
