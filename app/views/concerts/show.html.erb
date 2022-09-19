@@ -1,7 +1,6 @@
 <div id="page-container-concertshow">
 
   <%= render "shared/navbar" %>
-  <div class="navbar-space"></div>
 
   <div class="show">
     <%= image_tag @concert.artist.image_url, class: "show-image" %>
@@ -37,7 +36,6 @@
 
     <div class="show-desc">
       <p><%= @concert.description %></p>
-      <p></p>
     </div>
   </div>
 

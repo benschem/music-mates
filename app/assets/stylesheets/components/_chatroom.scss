@@ -13,7 +13,7 @@
   }
 
   .messages {
-    height: 400px;
+    height: 390px;
     overflow: scroll;
     padding: 1rem;
   }
@@ -22,6 +22,7 @@
     border-top: 1px solid $gray-200;
     padding: 1rem;
     padding-bottom: 0;
+    margin-bottom: 0;
 
     .form-group {
       margin-bottom: 0;
