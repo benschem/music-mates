@@ -46,7 +46,7 @@ class User < ApplicationRecord
   end
 
   def get_top_artists(token)
-    url = "https://api.spotify.com/v1/me/top/artists"
+    url = "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=50"
     endpoint = HTTParty.get(url, headers: {
       'Content-Type': "application/json",
       Authorization: "Bearer #{token}"
