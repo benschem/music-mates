@@ -27,7 +27,7 @@
             <% @users.each_with_index do |user, i| %>
               <% if (i != 4 || i != nil) && (user == f.user) %>
                 <% userfollow << user %>
-                <img src="<%= user.avatar %>" class="avatar">
+                <%= cl_image_tag user.photo.key, class: "avatar" %>
               <% end %>
               <% if userfollow.count > 5 %>
                 <!-- Show a number that is userfollow - 5 -->

@@ -15,7 +15,14 @@ class ConcertsController < ApplicationController
       end
     end
 
-    @concerts = current_user.concerts
+    if params[:query].present?
+      sql_query = "artists.name ILIKE :query"
+      @concerts = Concert.joins(:artist).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @concerts = current_user.concerts
+      # @concerts = current_user.concerts
+    end
+    
     @users = User.all
   end
 
