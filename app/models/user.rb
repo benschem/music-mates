@@ -1,4 +1,5 @@
 require "json"
+require "open-uri"
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -35,7 +36,8 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
       # user.avatar = auth.info.image
-      user.photo.attach(io: auth.info.image, filename: "avatar.jpg", content_type: "image/png")
+      file = URI.open(auth.info.image)
+      user.photo.attach(io: file, filename: "#{auth.info.name}.jpg", content_type: "image/png")
     end
 
     # this_user.token = auth.credentials.token => uncomment this if we need to call Spotify API elsewhere in the app
