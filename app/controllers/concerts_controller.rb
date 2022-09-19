@@ -6,11 +6,15 @@ class ConcertsController < ApplicationController
 
   def index
     current_user.artists.each do |artist|
-      concerts = concerts_from_API_for(artist)
-      concerts.each do |concert|
-        create_concert_unless_it_already_exists(concert, artist)
+      concerts = concerts_from_api_for(artist) # if error => concerts = false
+      if concerts
+        concerts.each do |concert|
+          # p concert["datetime"]
+          create_concert_unless_it_already_exists(concert, artist)
+        end
       end
     end
+
     @concerts = current_user.concerts
     @users = User.all
   end
@@ -19,14 +23,16 @@ class ConcertsController < ApplicationController
     @concert = Concert.find(params[:id])
     @follows = @concert.artist.follows
     @users = [] # replace this with search
-    @follows.each { |f| @users << f.user}
+    @follows.each { |f| @users << f.user }
   end
 
   private
 
-  def concerts_from_API_for(artist)
-    HTTParty.get("https://rest.bandsintown.com/artists/#{url_encode(artist.name)}/events?app_id=#{ENV["BANDS_IN_TOWN_KEY"]}&date=upcoming")
-    # returns array of concert objects
+  def concerts_from_api_for(artist)
+    potential_concerts = HTTParty.get("https://rest.bandsintown.com/artists/#{url_encode(artist.name)}/events?app_id=#{ENV["BANDS_IN_TOWN_KEY"]}&date=upcoming")
+    p potential_concerts
+    # returns array of concerts objects
+    potential_concerts[0] && potential_concerts[0]["datetime"] ? potential_concerts : false
   end
 
   def  create_concert_unless_it_already_exists(concert, artist)
@@ -38,5 +44,4 @@ class ConcertsController < ApplicationController
       venue: concert["venue"]["name"]
     )
   end
-
 end
