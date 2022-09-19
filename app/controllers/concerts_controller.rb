@@ -11,7 +11,13 @@ class ConcertsController < ApplicationController
         create_concert_unless_it_already_exists(concert, artist)
       end
     end
-    @concerts = current_user.concerts
+    if params[:query].present?
+      sql_query = "artists.name ILIKE :query"
+      @concerts = Concert.joins(:artist).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @concerts = current_user.concerts
+      # @concerts = Concert.all
+    end
     @users = User.all
   end
 
