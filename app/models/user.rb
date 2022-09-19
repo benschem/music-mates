@@ -38,7 +38,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
       # user.avatar = auth.info.image
-      unless auth.info.image.nil
+      unless auth.info.image.nil?
         file = URI.open(auth.info.image)
         user.photo.attach(io: file, filename: "#{auth.info.name}.jpg", content_type: "image/png")
       end
