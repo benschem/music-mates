@@ -6,10 +6,14 @@ class ConcertsController < ApplicationController
 
   def index
     current_user.artists.each do |artist|
-      concerts = concerts_from_api_for(artist) # if error => concerts = false
-      if concerts
+      concerts = concerts_from_api_for(artist)          # if there's an error it will return false
+      if concerts                                       # if it's false it won't create one
         concerts.each do |concert|
-          create_concert_unless_it_already_exists(concert, artist)
+          # concert["venue"]["country"] => "Australia"
+          # current_user.location => "AU"
+          if concert["venue"]["country"] == "Australia" # TODO: make it == current_user.location
+            create_concert_unless_it_already_exists(concert, artist)
+          end
         end
       end
     end
@@ -44,7 +48,9 @@ class ConcertsController < ApplicationController
       city: concert["venue"]["city"],
       country: concert["venue"]["country"],
       description: Rails::Html::FullSanitizer.new.sanitize(concert["description"]),
-      venue: concert["venue"]["name"]
+      venue: concert["venue"]["name"],
+      latitude: concert["venue"]["latitude"],
+      longitude: concert["venue"]["longitude"]
     )
   end
 end
