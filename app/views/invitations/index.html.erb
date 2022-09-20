@@ -3,7 +3,7 @@
   <div class="invitation">
     <h1>Hey <%= current_user.first_name %>! You've been invited to these concerts!</h1>
     <% if @invitations.present? %>
-      <% if @invitations.all? { |i| i.status != "pending" } %>
+      <% if @invitations.any? { |invite| invite.status == "pending" } %>
         <% @invitations.each do |invite| %>
           <% concert = invite.group.concert %>
           <% if invite.status == "pending" %>
@@ -41,10 +41,10 @@
           <% end %>
         <% end %>
       <% else %>
-        <p>You have sorted all your invites!</p>
+        <p>You haven't been invited to anything yet!</p>
       <% end %>
     <% else %>
-      <p>You have not been invited D;</p>
+      <p>You haven't been invited to anything yet!</p>
     <% end %>
   </div>
 </div>
