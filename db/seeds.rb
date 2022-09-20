@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require_relative "seedrepo"
 
 puts "Cleaning database..."
 User.destroy_all # if Rails.en.development
@@ -54,13 +55,32 @@ end
   puts "Created #{concert.artist.name}'s concert on #{concert.date} at #{concert.date}, #{concert.venue}."
 end
 
+r = [
+"Pouya",
+"Stormzy",
+"Aitch",
+"Central CEE",
+"The Jezabels"
+]
+
+@user_images.each do |img|
+  User.create!(
+    first_name: img[0],
+    last_name: "Wagon",
+    email: Faker::Internet.safe_email,
+    password: "123456",
+    location: "Australia",
+    avatar: img[1]
+  )
+end
+
 30.times do
   user = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.safe_email,
     password: "123456",
-    location: "AU",
+    location: "Australia",
     avatar: Faker::Avatar.image,
   )
 
@@ -84,11 +104,11 @@ hunter = User.create(
 puts "#{hunter.first_name} has been born!"
 
 5.times do
-  a = artists.sample
-  a = artists.sample while hunter.artists.include?(a)
+  random_artist = nil
+  random_artist = artists.sample while hunter.artists.include?(random_artist)
 
   Follow.create!(
-    artist: a,
+    artist: random_artist,
     user: hunter
   )
   puts "#{hunter.first_name} follows #{a.name}!"

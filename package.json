@@ -9,6 +9,8 @@
     "bootstrap": "^5.2.1",
     "jquery": "^3.6.1",
     "popper.js": "^1.16.1",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.33",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   },

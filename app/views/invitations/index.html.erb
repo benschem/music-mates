@@ -1,8 +1,16 @@
 <div id="page-container-groups">
 
+<%= link_to 'Click Me', invitation_path("#"), data: { confirm: 'Are you sure?', text: 'Will
+show up as the dialog text', turbo_method: :patch} %>
+
   <div class="invitation">
-    <h1>Hey <%= current_user.first_name %>! You've been invited to these concerts!</h1>
+    <h1>Hey <%= current_user.first_name %>! Here are your invites!</h1>
     <% if @invitations.present? %>
+      <% if @invitations.all? { |i| i.status != "pending"} %>
+        <p>You've resolved all of your invitations!</p>
+        <%= image_tag "Hunter.jpg" %>
+      <% end %>
+    <% elsif %>
       <% @invitations.each do |invite| %>
         <% concert = invite.group.concert %>
         <% if invite.status == "pending" %>
