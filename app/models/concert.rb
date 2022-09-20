@@ -4,7 +4,8 @@ class Concert < ApplicationRecord
   has_many :follows, through: :artist
   has_many :users, through: :follows
 
-  default_scope { order(date: :desc) }
+  default_scope { order(date: :asc) }
+  # default_scope where {  }
 
   validates :artist, presence: true
   validates :date, presence: true
