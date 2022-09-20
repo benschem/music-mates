@@ -1,0 +1,13 @@
+tony =["Tony", "Wang", "https://res.cloudinary.com/benschem/image/upload/v1663653911/production/Tony_sm44rz.jpg"]
+tae = ["Tae", "Lee", "https://res.cloudinary.com/benschem/image/upload/v1663653911/production/Tae_hnhfxg.jpg"]
+vince = ["Vince", "Tran", "https://res.cloudinary.com/benschem/image/upload/v1663653911/production/Vince_orpyk6.jpg"]
+talina = ["Talina", "Bayeleva", "https://res.cloudinary.com/benschem/image/upload/v1663653910/production/Talina_m3ijdl.jpg"]
+taneshwar = ["Taneshwar", "Sodhi", "https://res.cloudinary.com/benschem/image/upload/v1663653910/production/Taneshwar_buwrfw.jpg"]
+manon = ["Manon", "Shearn", "https://res.cloudinary.com/benschem/image/upload/v1663653910/production/Manon_rho6xh.jpg"]
+rylan = ["Rylan", "McNeil", "https://res.cloudinary.com/benschem/image/upload/v1663653910/production/Rylan_ikoscy.jpg"]
+jon = ["Jon", "Santurbano", "https://res.cloudinary.com/benschem/image/upload/v1663653909/production/Jon_wszswo.jpg"]
+angus = ["Angus", "McDonald", "https://res.cloudinary.com/benschem/image/upload/v1663653909/production/Angus_vpjgvn.jpg"]
+kurt = ["Kurt", "Liu", "https://res.cloudinary.com/benschem/image/upload/v1663653909/production/Kurt_qnnab8.jpg"]
+chris = ["Chris", "Raphael", "https://res.cloudinary.com/benschem/image/upload/v1663653909/production/Chris_ini3sg.jpg"]
+
+@classmates = [tony, tae, vince, talina, taneshwar, manon, rylan, jon, angus, kurt, chris]

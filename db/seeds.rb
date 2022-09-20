@@ -1,10 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require_relative "seed_repo"
+require_relative "artist_repo"
+require "open-uri"
+require "erb"
+include ERB::Util
+
+# CLEANING DATABASE
 
 puts "Cleaning database..."
 User.destroy_all # if Rails.en.development
@@ -15,99 +15,105 @@ Invitation.destroy_all # if Rails.en.development
 Follow.destroy_all # if Rails.en.development
 Chatroom.destroy_all # if Rails.en.development
 Message.destroy_all # if Rails.en.development
+puts "Database cleaned."
+
+# CREATE SOME DUMMY ARTISTS
+
+puts "Creating some dummy artists..."
+
+all_artists = []
+@seed_artists.each do |artist|
+  new_artist = Artist.create(
+    artist
+  )
+  puts "#{new_artist.name} created!"
+  all_artists << new_artist
+end
+
+# CREATE SOME DUMMY USERS
+
+puts "Creating some dummy users..."
 
 User.create!(
-  first_name: "Music",
-  last_name: "Mates",
+  first_name: "Hunter",
+  last_name: "Shark",
   email: "music@mates.com",
   password: "123456",
   location: "Melbourne",
-  avatar: "seedimages/IMG_2579"
 )
-puts "Created User: Music Mates, Email: music@mates.com, Password: 123456."
-puts "\n"
+puts "Created a User! Name: Hunter Shark, Email: music@mates.com, Password: 123456."
 
-location = ["Melbourne", "Canberra", "Brisbane", "Hobart", "Sydney"]
-venue = ["MCG", "The Pub", "Your Backyard", "Sydney Opera House", "McDonald's"]
-
-# should use real artists
-artists = []
-10.times do
-  a = Artist.create(
-    name: Faker::Music.band,
-    image_url: "https://imgs.smoothradio.com/images/191589?width=1200&crop=16_9&signature=GRazrMVlAISqkcXrrNA6ku356R0=",
-    spotify_link: "https://open.spotify.com/artist/0gxyHStUsqpMadRV0Di1Qt"
-  )
-  puts "Created #{a.name}"
-  artists << a
-end
-
-# should use real concerts
-6.times do
-  concert = Concert.create(
-    date: Date.today,
-    location: location.sample,
-    description: Faker::Quotes::Shakespeare.hamlet_quote,
-    venue: venue.sample,
-    artist: artists.sample
-  )
-  puts "Created #{concert.artist.name}'s concert on #{concert.date} at #{concert.date}, #{concert.venue}."
-end
-
-30.times do
-  user = User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+@classmates.each do |classmate|
+  new_user = User.new(
+    first_name: classmate[0],
+    last_name: classmate[1],
     email: Faker::Internet.safe_email,
     password: "123456",
     location: "AU",
     avatar: Faker::Avatar.image,
   )
+  new_user.photo.attach(io: URI.open(classmate[2]), filename: "#{classmate[0]}-avatar.png", content_type: "image/jpg")
+  new_user.save
+  puts "#{new_user.first_name} #{new_user.last_name} created!"
 
-  follow = Follow.create(
-    artist: artists.sample,
-    user: user
-  )
-  puts "#{user.first_name} follows #{follow.artist.name}."
+  10.times do
+    random_artist = all_artists.sample
+    random_artist = all_artists.sample while new_user.follows.include?(random_artist)
+    Follow.create(
+      user: new_user,
+      artist: random_artist
+    )
+    puts "#{new_user.first_name} #{new_user.last_name} follows #{random_artist.name}"
+  end
 end
 
-puts "\n"
+# THESE API METHODS NEED TO BE DEFINED BEFORE WE CALL THEM
 
-hunter = User.create(
-  first_name: "Hunter",
-  last_name: "Shark",
-  location: "Sydney",
-  email: "hunter@chomp.com",
-  password: "123456",
-  avatar: "seedimages/IMG_2579"
-)
-puts "#{hunter.first_name} has been born!"
-
-5.times do
-  a = artists.sample
-  a = artists.sample while hunter.artists.include?(a)
-
-  Follow.create!(
-    artist: a,
-    user: hunter
-  )
-  puts "#{hunter.first_name} follows #{a.name}!"
+def concerts_from_api_for(artist)
+  potential_concerts = HTTParty.get("https://rest.bandsintown.com/artists/#{url_encode(artist.name)}/events?app_id=#{ENV["BANDS_IN_TOWN_KEY"]}&date=upcoming")
+  # returns array of concerts objects
+  potential_concerts[0] && potential_concerts[0]["datetime"] ? potential_concerts : false
+  # ⬆️ this line is protecting against empty/nil concerts being added
 end
 
-group = Group.create(
-  concert: Concert.first
-)
+def  create_concert_unless_it_already_exists(concert, artist)
+  new_concert = Concert.where(artist: artist, date: DateTime.parse(concert["datetime"])).first_or_create(
+    artist: artist,
+    date: DateTime.parse(concert["datetime"]),
+    location: concert["venue"]["location"],
+    city: concert["venue"]["city"],
+    country: concert["venue"]["country"],
+    description: Rails::Html::FullSanitizer.new.sanitize(concert["description"]),
+    venue: concert["venue"]["name"],
+    latitude: concert["venue"]["latitude"],
+    longitude: concert["venue"]["longitude"]
+  )
+  puts "Created a concert in #{new_concert.city} for #{artist.name} on #{new_concert.date}."
+end
 
-invite = Invitation.create(
-  user: hunter,
-  group: group,
-  status: 1
-)
+# THIS IS WHERE WE MAKE THE BANDSINTOWN API CALL
+all_users = User.all
 
-chatroom = Chatroom.create(
-  group: group,
-  name: "Shark Club"
-)
-puts "\n"
+puts "Making an API call to BandsInTown to get concerts for each user..."
+
+all_users.each do |user|
+  puts "Going through #{user.first_name}'s artists..."
+  user.artists.each do |artist|
+    puts "Looking up concerts for #{artist.name}..."
+    artist_concerts = concerts_from_api_for(artist)
+    if artist_concerts
+      artist_concerts.each do |concert|
+        if concert["venue"]["country"] == "Australia"
+          create_concert_unless_it_already_exists(concert, artist)
+        end
+      end
+    end
+  end
+end
+
+# TODO: Pull concerts from other countries (matching user's spotify location)
+# maybe use latitude and longitude to determine country
+# concert["venue"]["country"] => "Australia"
+# current_user.location => "AU"
 
 puts "Done!"
