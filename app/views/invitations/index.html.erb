@@ -3,41 +3,45 @@
   <div class="invitation">
     <h1>Hey <%= current_user.first_name %>! You've been invited to these concerts!</h1>
     <% if @invitations.present? %>
-      <% @invitations.each do |invite| %>
-        <% concert = invite.group.concert %>
-        <% if invite.status == "pending" %>
-          <div class="concert-card">
-          <div class="img-grey" style="background-image: url(<%= concert.artist.image_url %>)"></div>
-          <div class="img-gradient"></div>
-          <div class="concert-info">
-            <h2><strong><%= concert.artist.name %></strong></h2>
-            <p><strong><%= concert.date.strftime("%A %e %B %Y") %></strong></p>
-            <p><%= concert.venue %>, <%= concert.location %></p>
-          </div>
-        <div class="concert-avatars">
-          <%= cl_image_tag invite.user.photo.key, class: "avatar" %>
-          <p><%= invite.user.first_name + " " + invite.user.last_name %> has invited you to this concert</p>
-
-          <% concert.users.without_me(current_user).first(5).each do |user|%>
-            <%= cl_image_tag user.photo.key, class: "avatar" %>
-            <%# <%= image_tag user.avatar, class: "avatar"%>
-
-          <% end %>
-          <% if concert.users.without_me(current_user).count > 5 %>
-            <div class="avatar">
-              + <%= concert.users.without_me(current_user).count - 5 %>
+      <% if @invitations.all? { |i| i.status != "pending" } %>
+        <% @invitations.each do |invite| %>
+          <% concert = invite.group.concert %>
+          <% if invite.status == "pending" %>
+            <div class="concert-card">
+            <div class="img-grey" style="background-image: url(<%= concert.artist.image_url %>)"></div>
+            <div class="img-gradient"></div>
+            <div class="concert-info">
+              <h2><strong><%= concert.artist.name %></strong></h2>
+              <p><strong><%= concert.date.strftime("%A %e %B %Y") %></strong></p>
+              <p><%= concert.venue %>, <%= concert.location %></p>
             </div>
-          <% end %>
-        </div>
-      </div>
-          <!-- invite.status -->
-          <div class="status-buttons">
-            <div class="btn-accept"><%= link_to "accept", invitation_path(invite, status: 1), data: { turbo_method: :patch } %></div>
-            <div class="btn-decline"><%= link_to "decline", invitation_path(invite, status: 2), data: { turbo_method: :patch } %></div>
+          <div class="concert-avatars">
+            <%= cl_image_tag invite.user.photo.key, class: "avatar" %>
+            <p><%= invite.user.first_name + " " + invite.user.last_name %> has invited you to this concert</p>
+
+            <% concert.users.without_me(current_user).first(5).each do |user|%>
+              <%= cl_image_tag user.photo.key, class: "avatar" %>
+              <%# <%= image_tag user.avatar, class: "avatar"%>
+
+            <% end %>
+            <% if concert.users.without_me(current_user).count > 5 %>
+              <div class="avatar">
+                + <%= concert.users.without_me(current_user).count - 5 %>
+              </div>
+            <% end %>
           </div>
-          <% else %>
-            <p>You've <%= invite.status %> the invitation for <%= concert.artist.name %></p>
+        </div>
+            <!-- invite.status -->
+            <div class="status-buttons">
+              <div class="btn-accept"><%= link_to "accept", invitation_path(invite, status: 1), data: { turbo_method: :patch } %></div>
+              <div class="btn-decline"><%= link_to "decline", invitation_path(invite, status: 2), data: { turbo_method: :patch } %></div>
+            </div>
+            <% else %>
+              <p>You've <%= invite.status %> the invitation for <%= concert.artist.name %></p>
+          <% end %>
         <% end %>
+      <% else %>
+        <p>You have sorted all your invites!</p>
       <% end %>
     <% else %>
       <p>You have not been invited D;</p>
