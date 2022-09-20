@@ -8,13 +8,13 @@
 
 puts "Cleaning database..."
 User.destroy_all # if Rails.en.development
-Artist.destroy_all
-Concert.destroy_all
-Group.destroy_all
-Invitation.destroy_all
-Follow.destroy_all
-Chatroom.destroy_all
-Message.destroy_all
+Artist.destroy_all # if Rails.en.development
+Concert.destroy_all # if Rails.en.development
+Group.destroy_all # if Rails.en.development
+Invitation.destroy_all # if Rails.en.development
+Follow.destroy_all # if Rails.en.development
+Chatroom.destroy_all # if Rails.en.development
+Message.destroy_all # if Rails.en.development
 
 User.create!(
   first_name: "Music",
@@ -22,7 +22,7 @@ User.create!(
   email: "music@mates.com",
   password: "123456",
   location: "Melbourne",
-  avatar: "seedimages/IMG_2571"
+  avatar: "seedimages/IMG_2579"
 )
 puts "Created User: Music Mates, Email: music@mates.com, Password: 123456."
 puts "\n"
