@@ -1,0 +1,51 @@
+  <%= render "shared/navbar" %>
+
+  <div id="page-container-profile">
+
+
+    <div class="profile">
+      </div>
+     <div class="search-bar">
+  <%= form_with url: concerts_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find your friends!"
+    %>
+    <%= submit_tag "Search", class: "btn btn-flat" %>
+    <% end %>
+    </div>
+
+<%# #user handle here %>
+<div class="card">
+  <div class="card-body">current_user</div>
+</div>
+
+
+<%#
+#insert the below into the card with list inside %>
+
+
+
+
+
+
+
+<div class="card m-2" style="width: 300px;">
+  <div class="card-header"><%= current_user.first_name %>'s Top Artists</div>
+  <ul class="list-group list-group-flush">
+    <% @artists.each do |artist| %>
+    <li class="list-group-item"><%= artist.name %></li>
+    <% end %>
+  </ul>
+</div>
+
+<%# <div class="card m-2" style="width: 300px;">
+  <div class="card-header">Top Genres</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Item 1</li>
+    <li class="list-group-item">Item 2</li>
+    <li class="list-group-item">Item 3</li>
+    <li class="list-group-item">Item 4</li>
+  </ul>
+</div> %>
