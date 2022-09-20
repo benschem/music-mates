@@ -4,10 +4,11 @@
       <i class="fa-solid fa-house <%= iscurrentpage?("concerts") %>"></i>
     <% end %>
     <%= link_to "/groups", class: "icons target", id: "target2" do %>
-      <i class="fa-solid fa-clipboard-list <%= iscurrentpage?("groups") %>"></i>
+      <i class="fa-solid fa-comments <%= iscurrentpage?("groups") %>"></i>
     <% end %>
     <%= link_to "/invitations", class: "icons target", id: "target3" do %>
-      <i class="fa-solid fa-envelope <%= iscurrentpage?("invitations") %>"></i>
+      <i class="fa-solid fa-paper-plane <%= iscurrentpage?("invitations") %>"></i>
+      <span class="button-badge">1</span>
     <% end %>
     <%= link_to "/profiles/#{current_user.id}", class: "icons target", id: "target4" do %>
       <i class="fa-solid fa-user <%= iscurrentpage?("profiles") %>"></i>
