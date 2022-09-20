@@ -17,7 +17,7 @@
         <div class="concert-avatars">
           <% concert.users.without_me(current_user).first(5).each do |user|%>
             <!-- <%= cl_image_tag user.photo.key, class: "avatar" %> -->
-            <%= user.avatar %>
+            <%= image_tag user.avatar, class: "avatar" %>
           <% end %>
           <% if concert.users.without_me(current_user).count > 5 %>
           <!--  userfollow - 5 -->
