@@ -1,3 +1,4 @@
+
 .footer-musicmates {
   background-color: #2B3A67;
   width: 100%;
@@ -39,4 +40,25 @@
 
 :target {
   color: $success;
+}
+
+#target3 {
+  position: relative;
+}
+
+.button-badge {
+  background-color: #fa3e3e;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  font-size: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  padding: 2px;
+  position: absolute;
+  top: -3px;
+  right: -8px;
 }
