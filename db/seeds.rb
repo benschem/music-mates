@@ -60,7 +60,7 @@ end
     last_name: Faker::Name.last_name,
     email: Faker::Internet.safe_email,
     password: "123456",
-    location: "AU"
+    location: "AU",
     avatar: Faker::Avatar.image,
   )
 

@@ -25,7 +25,7 @@
     padding: 7px 10px;
     color: white;
     background-color: #2B3A67;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   }
 
   .group-avatar {
@@ -34,16 +34,20 @@
   }
 
   #group-btn {
-    margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 32px;
     background-color: $success;
     border: 1px solid $success;
     border-radius: 7px;
     color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px rgba(206,89,55,0);
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1);
     text-decoration: none;
-    padding: 8px 15px;
+    padding: 10px 25px;
     transition: 0.02s;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   }
 
   #group-btn:active {

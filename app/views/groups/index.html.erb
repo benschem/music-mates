@@ -7,19 +7,25 @@
   <% if @groups.count >= 1 %>
     <% @groups.each do |group| %>
       <%= link_to group_path(group) do %>
+      <% concert = group.concert %>
         <div class="concert-card">
+          <div class="img-grey" style="background-image: url(<%= concert.artist.image_url %>)"></div>
+          <div class="img-gradient"></div>
           <div class="concert-info">
-            <h2><strong><%= group.concert.artist.name %></strong></h2>
-            <p><strong><%= group.concert.date %></strong></p>
-            <p><%= group.concert.venue %>, <%= group.concert.location %></p>
+            <h2><strong><%= concert.artist.name %></strong></h2>
+            <p><strong><%= concert.date.strftime("%A %e %B %Y") %></strong></p>
+            <p><%= concert.venue %>, <%= concert.location %></p>
           </div>
           <div class="concert-avatars">
-            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
-            <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+            <% concert.users.without_me(current_user).first(5).each do |user|%>
+              <!-- <%= cl_image_tag user.photo.key, class: "avatar" %> -->
+              <%= user.avatar %>
+            <% end %>
+            <% if concert.users.without_me(current_user).count > 5 %>
+            <div class="avatar">
+              + <%= concert.users.without_me(current_user).count - 5 %>
+            </div>
+            <% end %>
           </div>
         </div>
       <% end %>

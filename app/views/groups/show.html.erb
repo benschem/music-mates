@@ -3,9 +3,11 @@
 
 
   <div class="concert-card">
+    <div class="img-grey" style="background-image: url(<%= @concert.artist.image_url %>)"></div>
+    <div class="img-gradient"></div>
     <div class="concert-info">
       <h2><strong><%= @concert.artist.name %></strong></h2>
-      <p><strong><%= @concert.date %></strong></p>
+      <p><strong><%= @concert.date.strftime("%A %e %B %Y") %></strong></p>
       <p><%= @concert.venue %>, <%= @concert.location %></p>
     </div>
   </div>

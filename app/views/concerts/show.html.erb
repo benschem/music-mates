@@ -1,6 +1,4 @@
 <div id="page-container-concertshow">
-
-
   <div class="show">
     <%= image_tag @concert.artist.image_url, class: "show-image" %>
     <h1 id="show-h1"><%= @concert.artist.name %></h1>
@@ -28,8 +26,13 @@
         🧑‍🤝‍🧑
       </div>
       <div class="show-detail">
-        <h2><%= pluralize(@concert.users.without_me(current_user).count, 'mate') %></h2>
-        <h3>might be interested</h3>
+        <% unless @concert.users.without_me(current_user).count == 0 %>
+          <h2><%= pluralize(@concert.users.without_me(current_user).count, 'mate') %></h2>
+          <h3>might be interested</h3>
+        <% else %>
+          <h2>None of your friends are going to this concert...</h2>
+          <h3>This will be a solo trip.</h3>
+        <% end %>
       </div>
     </div>
 

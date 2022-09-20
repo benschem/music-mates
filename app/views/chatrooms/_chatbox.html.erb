@@ -1,5 +1,5 @@
 <!-- IF YOU ARE GOING TO STYLE THIS, LET MICAH KNOW! THERE IS EXTRA STYLING IN JAVASCRIPT-->
-<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+<div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
   <div class="messages" data-chatroom-subscription-target="messages">
     <% chatroom.messages.each do |msg| %>
       <div class="message-row d-flex <%= msg.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
