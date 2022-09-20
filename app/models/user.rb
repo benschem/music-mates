@@ -1,4 +1,5 @@
 require "json"
+require "open-uri"
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -14,6 +15,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   has_one_attached :photo
+
+  scope :without_me, ->(user) { where.not(id: user.id) }
 
   validates :location, presence: true
   validates :first_name, presence: true
@@ -34,8 +37,11 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
-      user.avatar = auth.info.image
-      p user
+      # user.avatar = auth.info.image
+      unless auth.info.image.nil?
+        file = URI.open(auth.info.image)
+        user.photo.attach(io: file, filename: "#{auth.info.name}.jpg", content_type: "image/png")
+      end
     end
 
     # this_user.token = auth.credentials.token => uncomment this if we need to call Spotify API elsewhere in the app

@@ -5,20 +5,46 @@
   align-items: left;
   height: 200px;
   width: 315px;
-  border: 1.5px solid #2B3A67;
   border-radius: 5px;
   margin: 16px auto;
   padding: 12px;
   background-size: cover;
   background-blend-mode: saturation;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   transition: 0.05s;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-grey {
+  position: absolute;
+  background-size: cover;
+  height: 102%;
+  width: 102%;
+  filter: grayscale(100%);
+  z-index: 100;
+  top: -2%;
+  left: -2%;
+}
+
+.img-gradient {
+  background: linear-gradient(black, rgba(0,0,0,0.1));
+  z-index: 200;
+  position: absolute;
+  background-size: cover;
+  height: 102%;
+  width: 102%;
+  top: -2%;
+  left: -2%;
 }
 
 .concert-card:active {
   background-size: cover;
-  transform: scale(1.01);
+  transform: scale(1.02);
 
+  .img-grey {
+    filter: none;
+  }
 }
 
 .concert-card h2 {
@@ -37,4 +63,8 @@
 
 a {
   text-decoration: none;
+}
+
+.concert-avatars, .concert-info {
+  z-index: 500;
 }

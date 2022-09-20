@@ -22,7 +22,10 @@
     <%= simple_form_for [@concert, @group] do |f| %>
         <% @users.each do |user| %>
         <% next if user == current_user  %>
-        <div class="friends-invite"> <div class="avatar-name"> <img src="<%= user.avatar %>" class="avatar" id="group-avatar"> <%= user.first_name %> </div>
+        <div class="friends-invite"> <div class="avatar-name d-flex align-items-center">
+          <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
+          <p class="ms-2 mb-0"><%= user.first_name + " " + user.last_name %></p>
+        </div>
         <%= check_box_tag 'user_ids[]', user.id %></div>
         <% end %>
       <%= f.submit "Make a group!", id: "group-btn" %>

@@ -1,10 +1,7 @@
-<div id="page-container">
-
+<div id="page-container-groups">
+<!-- Talk to Tae-->
   <%= render "shared/navbar" %>
 
-  Hello?
-  <%= @concert %>
-  <%= @group %>
 
   <div class="concert-card">
     <div class="concert-info">
@@ -18,8 +15,9 @@
   <!-- Friends go here! -->
   </div>
 
-  <div class="chatbox">
+  <div class="chatbox-group">
     <%= render "chatrooms/chatbox", chatroom: @chatroom, message: @message, group: @group %>
   </div>
 
+<%= render "shared/footer" %>
 </div>
