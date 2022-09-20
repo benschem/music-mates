@@ -14,6 +14,7 @@
   height: 80px;
   object-fit: cover;
 }
+
 .show-detail-container {
   display: flex;
   flex-direction: row;
@@ -31,7 +32,41 @@
   font-weight: bolder;
 }
 
-.text-center {
-  text-align: center !important;
-  color: #2b3a67;
+.profile-artist-cards {
+  display: flex;
+  padding: 25px 0px;
+  list-style: none;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.profile-artist-cards .card-info {
+  display: flex;
+  flex: 0 0 100%;
+  border-radius: 12px;
+  box-shadow: 0 5px 2px rgba(0, 80, 80, 0.1);
+  scroll-snap-align: start;
+  transition: all 0.2s;
+  height: 250px;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  margin: 0 3px;
+}
+
+.profile-artist-cards::-webkit-scrollbar {
+  height: 12px;
+}
+
+.profile-artist-cards::-webkit-scrollbar-thumb,
+.profile-artist-cards::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.profile-artist-cards::-webkit-scrollbar-thumb {
+  background: $dark-blue;
+}
+
+.profile-artist-cards::-webkit-scrollbar-track {
+  background: $light-blue;
 }
