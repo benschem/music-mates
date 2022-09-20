@@ -3,17 +3,18 @@ class GroupsController < ApplicationController
     @concert = Concert.find(params[:concert_id])
     @group = Group.new(concert: @concert)
     invitations = []
-    users = User.where(id: params[:user_ids])
-    users.each do |user|
+    selected_users = User.where(id: params[:user_ids])
+    selected_users.each do |selected_user|
       invitations << {
         group: @group,
-        user: user
+        user: selected_user
       }
     end
-    invitations << {group: @group, user: current_user}
     if @group.save
       Invitation.create(invitations)
-      current_user.invitations.last.status = "accepted"
+      my_own_invite = Invitation.new(group: @group, user: current_user)
+      my_own_invite.status = "accepted"
+      my_own_invite.save
       Chatroom.create(group: @group, name: @concert.artist.name)
       redirect_to group_path(@group)
     else
@@ -26,7 +27,7 @@ class GroupsController < ApplicationController
     @group = Group.new
     @follows = @concert.artist.follows
     @users = [] # replace this with search
-    @follows.each { |f| @users << f.user}
+    @follows.each { |f| @users << f.user }
   end
 
   def show
@@ -37,7 +38,8 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.joins(:invitations).where('invitations.user_id = ?', current_user.id)
+    # @groups = Group.joins(:invitations).where('invitations.user_id = ?', current_user.id)
+    @groups = current_user.groups
   end
 
   private
