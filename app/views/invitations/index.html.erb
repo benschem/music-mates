@@ -15,12 +15,12 @@
             <p><%= concert.venue %>, <%= concert.location %></p>
           </div>
         <div class="concert-avatars">
-          <%= image_tag invite.user.avatar, class: "avatar" %>
-          <p><%= invite.user %> has invited you to this concert</p>
+          <%= cl_image_tag invite.user.photo.key, class: "avatar" %>
+          <p><%= invite.user.first_name + " " + invite.user.last_name %> has invited you to this concert</p>
 
           <% concert.users.without_me(current_user).first(5).each do |user|%>
-            <!-- <%= cl_image_tag user.photo.key, class: "avatar" %> -->
-            <%= image_tag user.avatar, class: "avatar"%>
+            <%= cl_image_tag user.photo.key, class: "avatar" %>
+            <%# <%= image_tag user.avatar, class: "avatar"%>
 
           <% end %>
           <% if concert.users.without_me(current_user).count > 5 %>
