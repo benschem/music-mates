@@ -1,8 +1,37 @@
 #page-container-profile {
   margin-top: 80px;
+
 }
+
 .flexbox {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.profile-artist-avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+.show-detail-container {
+  display: flex;
+  flex-direction: row;
+  margin: 17px auto;
+  width: 310px;
+  height: 60px;
+  padding: 10px;
+  background-color: #2b3a67;
+  border-radius: 16px;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-size: larger;
+  font-family: revert;
+  font-weight: bolder;
+}
+
+.text-center {
+  text-align: center !important;
+  color: #2b3a67;
 }

@@ -12,21 +12,23 @@
     <% end %>
   </div>
 
-<div class="card">
-  <div class="card-body">
+  <div class="show-detail-container">
+    <%= cl_image_tag @user.photo.key, class: "avatar" %>
     <%= @user.first_name + " " + @user.last_name %>
   </div>
-</div>
 
-<div class="card m-2" style="width: 300px;">
-  <div class="card-header">
-    <%= @user.first_name %>'s Top Artists
+  <div class="container text-center mb-5 pb-3">
+    <h2 class="fs-3 text-2b3a67 fw-bold"><%= @user.first_name %>'s Top Artists</h2>
+    <div>
+      <% @top_artists.each do |artist| %>
+        <div>
+          <div style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= artist.image_url %>'); background-size: contain;">
+            <p class="fs-3 py-5 text-white fw-bold"><%= artist.name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <% @artists.each do |artist| %>
-      <li class="list-group-item"><%= artist.name %></li>
-    <% end %>
-  </ul>
 </div>
 
 <%# <div class="card m-2" style="width: 300px;">
