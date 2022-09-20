@@ -8,7 +8,7 @@
     <%= link_to "/invitations", class: "icons target", id: "target3" do %>
       <i class="fa-solid fa-envelope <%= iscurrentpage?("invitations") %>"></i>
     <% end %>
-    <%= link_to "/profile", class: "icons target", id: "target4" do %>
-      <i class="fa-solid fa-user <%= iscurrentpage?("profile") %>"></i>
+    <%= link_to "/profiles/#{current_user.id}", class: "icons target", id: "target4" do %>
+      <i class="fa-solid fa-user <%= iscurrentpage?("profiles") %>"></i>
     <% end %>
   </div>
