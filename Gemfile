@@ -64,6 +64,9 @@ gem "devise"
 # Dummy data
 gem "faker"
 
+# Locations from latitude and lonitude
+gem "geocoder"
+
 # spotify authentication
 gem 'omniauth-spotify'
 

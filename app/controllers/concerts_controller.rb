@@ -9,7 +9,6 @@ class ConcertsController < ApplicationController
       concerts = concerts_from_api_for(artist) # if error => concerts = false
       if concerts
         concerts.each do |concert|
-          # p concert["datetime"]
           create_concert_unless_it_already_exists(concert, artist)
         end
       end
@@ -34,6 +33,7 @@ class ConcertsController < ApplicationController
     p potential_concerts
     # returns array of concerts objects
     potential_concerts[0] && potential_concerts[0]["datetime"] ? potential_concerts : false
+    # ⬆️ this line is protecting against empty/nil concerts being added
   end
 
   def  create_concert_unless_it_already_exists(concert, artist)
@@ -41,6 +41,8 @@ class ConcertsController < ApplicationController
       artist: artist,
       date: DateTime.parse(concert["datetime"]),
       location: concert["venue"]["location"],
+      city: concert["venue"]["city"],
+      country: concert["venue"]["country"],
       description: Rails::Html::FullSanitizer.new.sanitize(concert["description"]),
       venue: concert["venue"]["name"]
     )
