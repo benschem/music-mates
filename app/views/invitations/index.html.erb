@@ -20,9 +20,10 @@
             <%= image_tag user.avatar, class: "avatar"%>
 
           <% end %>
-          <% if concert.users.count > 5 %>
-          <!--  userfollow - 5 -->
-          <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
+          <% if concert.users.without_me(current_user).count > 5 %>
+            <div class="avatar">
+              + <%= concert.users.without_me(current_user).count - 5 %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -32,8 +33,6 @@
             <div class="btn-decline"><%= link_to "decline", invitation_path(invite, status: 2), data: { turbo_method: :patch } %></div>
           </div>
           <% else %>
-           <% group = invite.group %>
-          <% concert =  group.concert %>
             <p>You've <%= invite.status %> the invitation for <%= concert.artist.name %></p>
         <% end %>
       <% end %>
@@ -42,3 +41,6 @@
     <% end %>
   </div>
 </div>
+<!--
+set_flash_message(:notice, :success, kind: "Spotify") if is_navigational_format?
+-->
