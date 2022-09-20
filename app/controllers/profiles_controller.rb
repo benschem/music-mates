@@ -3,4 +3,13 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     @artists = @user.artists
   end
+
+  def search
+    # Search based on what the user typed in
+    ##  params[:query] gives what user typed in
+    # Get the user
+    user = User.find_by("first_name ILIKE ?", "%#{params[:query]}%")
+    # Call the show action to display the user
+    redirect_to profile_path(user)
+  end
 end
