@@ -54,13 +54,13 @@ end
   puts "Created #{concert.artist.name}'s concert on #{concert.date} at #{concert.date}, #{concert.venue}."
 end
 
-30.times do
+50.times do
   user = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.safe_email,
     password: "123456",
-    location: "AU"
+    location: "AU",
     avatar: Faker::Avatar.image,
   )
 

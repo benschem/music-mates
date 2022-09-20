@@ -3,7 +3,7 @@
   <div class="search">
     <%= render "shared/search-bar" %>
   </div>
-
+<!-- AVATARS needs to be in Cloudinary-->
   <% @concerts.each do |concert| %>
     <%= link_to concert_path(concert), class: "concert-a" do %>
       <div class="concert-card">
@@ -16,9 +16,10 @@
         </div>
         <div class="concert-avatars">
           <% concert.users.without_me(current_user).first(5).each do |user|%>
-            <%= cl_image_tag user.photo.key, class: "avatar" %>
+            <!-- <%= cl_image_tag user.photo.key, class: "avatar" %> -->
+            <%= user.avatar %>
           <% end %>
-          <% if concert.users.count > 5 %>
+          <% if concert.users.without_me(current_user).count > 5 %>
           <!--  userfollow - 5 -->
           <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png" class="avatar">
           <% end %>

@@ -1,7 +1,6 @@
 class InvitationsController < ApplicationController
   def index
-    @invitations = []
-    current_user.invitations.each { |invite| @invitations << invite if invite.status == "accepted"}
+    @invitations = current_user.invitations
   end
 
   def create; end
