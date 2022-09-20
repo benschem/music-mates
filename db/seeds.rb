@@ -60,8 +60,8 @@ end
     last_name: Faker::Name.last_name,
     email: Faker::Internet.safe_email,
     password: "123456",
-    location: location.sample,
-    avatar: Faker::Avatar.image
+    location: "AU"
+    avatar: Faker::Avatar.image,
   )
 
   follow = Follow.create(
