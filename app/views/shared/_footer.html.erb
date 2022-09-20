@@ -8,7 +8,7 @@
     <% end %>
     <%= link_to "/invitations", class: "icons target", id: "target3" do %>
       <i class="fa-solid fa-paper-plane <%= iscurrentpage?("invitations") %>"></i>
-      <span class="button-badge">1</span>
+      <span class="button-badge"><%= (current_user.invitations).count %></span>
     <% end %>
     <%= link_to "/profiles/#{current_user.id}", class: "icons target", id: "target4" do %>
       <i class="fa-solid fa-user <%= iscurrentpage?("profiles") %>"></i>
