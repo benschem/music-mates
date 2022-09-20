@@ -11,6 +11,7 @@ class ConcertsController < ApplicationController
         concerts.each do |concert|
           # concert["venue"]["country"] => "Australia"
           # current_user.location => "AU"
+          # Maybe use the latitude and longitude to determine country
           if concert["venue"]["country"] == "Australia" # TODO: make it == current_user.location
             create_concert_unless_it_already_exists(concert, artist)
           end
