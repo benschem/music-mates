@@ -8,8 +8,7 @@ module ApplicationHelper
     render "shared/navbar" unless params[:controller] == pages && params[:action] == landing
   end
 
-  def footerlandingpage?(pages, landing)
-    render "shared/footer" unless params[:controller] == pages && params[:action] == landing
+  def hide_footer?
+    devise_controller? || params[:action] == "landing"
   end
-
 end

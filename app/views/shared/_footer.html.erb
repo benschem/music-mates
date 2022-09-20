@@ -1,3 +1,4 @@
+<% unless hide_footer? %>
   <div class="footer-musicmates">
     <%= link_to "/concerts", class: "icons target", id: "target1" do %>
       <i class="fa-solid fa-house <%= iscurrentpage?("concerts") %>"></i>
@@ -12,3 +13,4 @@
       <i class="fa-solid fa-user <%= iscurrentpage?("profiles") %>"></i>
     <% end %>
   </div>
+<% end %>
