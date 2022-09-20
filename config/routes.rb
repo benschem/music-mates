@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   end
   # group_id/chatroom
   resources :invitations, only: %i[index update]
+  resources :profiles, only: :show
 end
