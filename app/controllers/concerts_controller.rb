@@ -6,8 +6,7 @@ class ConcertsController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = "artists.name ILIKE :query OR concerts.city ILIKE :query"
-      @concerts = Concert.joins(:artist).where(sql_query, query: "%#{params[:query]}%")
+      @concerts = Concert.search_concerts(params[:query])
     else
       @concerts = current_user.concerts
     end
