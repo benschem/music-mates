@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+
   resources :concerts, only: %i[index show] do
+    collection do
+      patch :fetch_concerts
+    end
     resources :groups, only: %i[create new]
   end
   resources :groups, only: :index
