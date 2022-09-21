@@ -39,8 +39,14 @@
         </div>
             <!-- invite.status -->
             <div class="status-buttons">
-              <%= render "accepted_button" %>
-              <%= render "declined_button" %>
+              <%# <%= render "accepted_button" %>
+              <%# <%= render "declined_button" %>
+              <div class="btn-accept">
+                <%= link_to "accept", invitation_path(invite, status: 1), data: { turbo_method: :patch } %>
+              </div>
+              <div class="btn-decline">
+                <%= link_to "decline", invitation_path(invite, status: 2), data: { turbo_method: :patch } %>
+              </div>
             </div>
             <% else %>
               <p>You've <%= invite.status %> an invitation for <%= concert.artist.name %></p>

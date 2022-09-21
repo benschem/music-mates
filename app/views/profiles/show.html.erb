@@ -22,7 +22,7 @@
 
 <div class="container px-4">
 
-<h2 class="text-center mb-0 fw-bold username-attending"><%= @user == current_user ? "You" : @user.first_name %> will be attending</h2>
+<h2 class="text-center mb-0 fw-bold username-attending"><%= @user == current_user ? "You" : @user.first_name %>'re attending</h2>
  <ul class="profile-artist-cards">
     <% @user.groups.each do |group| %>
       <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= group.concert.artist.image_url %>'); background-size: cover">

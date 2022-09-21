@@ -1,24 +1,32 @@
-<div id="page-container-groups">
-<!-- Talk to Tae-->
+<div id="page-container-groupshow">
 
+<div class="show">
 
-  <div class="concert-card">
-    <div class="img-grey" style="background-image: url(<%= @concert.artist.image_url %>)"></div>
-    <div class="img-gradient"></div>
-    <div class="concert-info">
-      <h2><strong><%= @concert.artist.name %></strong></h2>
-      <p><strong><%= @concert.date.strftime("%A %e %B %Y") %></strong></p>
-      <p><%= @concert.venue %>, <%= @concert.location %></p>
+  <div>
+    <%= image_tag @concert.artist.image_url, class: "show-image" %>
+    TODO: Move artist name into middle of photo
+    <h1><%= @concert.artist.name %></h1>
+  </div>
+
+  <h1 >You're going! </h1>
+
+  <div>
+    <p>📅 On <%= @concert.date.strftime("%A %e %B %Y") %></p>
+    <p>From <%= @concert.date.strftime("%l:%M %P %Z") %></p>
+    <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
+    <p>📍 At <%= @concert.venue %></p>
+    <p>In <%= @concert.location %></p>
+  </div>
+
+  <h2>🧑‍🤝‍🧑 <%= pluralize(@concert.users.without_me(current_user).count, 'mate') %> are invited</h2>
+
+    <div>
+      <%= render "shared/index_avatars", concert: @concert %>
     </div>
+
+  TODO: Button does not link to chatroom, so don't click it as it will make a new group.
+  <div id="show-btn-container">
+    <%= link_to "Chat with this group!", new_concert_group_path(@concert), id:"show-btn" %>
   </div>
 
-  <div class="friend-list">
-  <!-- Friends go here! -->
-  </div>
-
-  <div class="chatbox-group">
-    <%= render "chatrooms/chatbox", chatroom: @chatroom, message: @message, group: @group %>
-  </div>
-
-<%= render "shared/footer" %>
 </div>
