@@ -10,6 +10,7 @@
   justify-content: space-around;
   align-items: center;
   z-index: 1000;
+  font-size: 22px;
 }
 
 .footer-space {
@@ -61,4 +62,13 @@
   position: absolute;
   top: -4px;
   right: -10px;
+
+}
+
+.make-visible {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
 }

@@ -1,16 +1,16 @@
 <% unless hide_footer? %>
   <div class="footer-musicmates">
     <%= link_to "/concerts", class: "icons target", id: "target1" do %>
-      <i class="fa-solid fa-house <%= iscurrentpage?("concerts") %>"></i>
+      <i class="fa-solid fa-magnifying-glass <%= iscurrentpage?("concerts") %>"></i>
+    <% end %>
+    <%= link_to "/invitations", class: "icons target", id: "target3" do %>
+      <i class="fa-solid fa-envelope-open-text <%= iscurrentpage?("invitations") %>"></i>
+      <span class="button-badge <%= (current_user.invitations.pending).count > 0 ? 'make-visible' : 'hide' %>">
+        <%= (current_user.invitations.pending).count if (current_user.invitations.pending).count > 0 %>
+      </span>
     <% end %>
     <%= link_to "/groups", class: "icons target", id: "target2" do %>
       <i class="fa-solid fa-comments <%= iscurrentpage?("groups") %>"></i>
-    <% end %>
-    <%= link_to "/invitations", class: "icons target", id: "target3" do %>
-      <i class="fa-solid fa-paper-plane <%= iscurrentpage?("invitations") %>"></i>
-      <span class="button-badge">
-        <%= (current_user.invitations).count if (current_user.invitations).count > 0 %>
-      </span>
     <% end %>
     <%= link_to "/profiles/#{current_user.id}", class: "icons target", id: "target4" do %>
       <i class="fa-solid fa-user <%= iscurrentpage?("profiles") %>"></i>
