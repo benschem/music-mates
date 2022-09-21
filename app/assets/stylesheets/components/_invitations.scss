@@ -27,7 +27,7 @@
   margin: 0 auto;
   width: 290px;
 
-    .btn-accept {
+    .accept {
       background-color: $success;
       border: 1px solid $success;
       border-radius: 7px;
@@ -37,20 +37,18 @@
       width: 100px;
       transition: all 0.2s;
       box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
-
-      a {
-        text-decoration: none;
-        color: white;
-        font-weight: 700;
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
       }
     }
 
-    .btn-accept:active {
+    .accept:active {
       border: 1px solid white;
       transform: scale(1.02);
     }
 
-    .btn-decline{
+    .decline{
       background-color: #2b3a67;
       border: 1px solid #2b3a67;
       margin-top: 0;
@@ -60,15 +58,13 @@
       width: 100px;
       transition: all 0.2s;
       box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.09) 0px 4px 6px -2px;
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
 
-      a {
-        text-decoration: none;
-        color: white;
-        font-weight: 700;
-      }
     }
 
-    .btn-decline:active {
+    .decline:active {
       border: 1px solid white;
       transform: scale(1.02);
     }
@@ -82,4 +78,3 @@
     width: 100%;
     border-radius: 70%;
   }
-}

@@ -1,0 +1,10 @@
+<%= link_to "Accept",
+    invitation_path(invite, status: 1),
+    class: "accept",
+    data: { turbo_method: :patch,
+            controller: "sweet-alert",
+            action: "click->sweet-alert#fireModal",
+            sweet_alert_title_value: "You've accepted the invitation!",
+            sweet_alert_text_value: "Get ready to rock your head out!",
+            sweet_alert_icon_value: "success"
+            }  %>
