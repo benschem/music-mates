@@ -34,38 +34,42 @@ end
 
 puts "Creating some dummy users..."
 
-User.create!(
-  first_name: "Music",
-  last_name: "Mates",
+hunter = User.create!(
+  first_name: "Micah",
+  last_name: "Kim",
   email: "music@mates.com",
   password: "123456",
-  location: "Melbourne"
+  location: "AU"
 )
-puts "Created a User! Name: Music Mates, Email: music@mates.com, Password: 123456."
-
-User.create!(
-  first_name: "Hunter",
-  last_name: "Shark",
-  email: "hunter@chomp.com",
-  password: "123456",
-  location: "Sydney"
-)
-puts "Created a User! Name: Hunter Shark, Email: hunter@chomp.com, Password: 123456."
-
-
+hunter.photo.attach(io: URI.open("https://res.cloudinary.com/benschem/image/upload/v1663733821/production/hunter-avatar_vkykjk.jpg"), filename: "hunters-avatar.png", content_type: "image/jpg")
+puts "Micah Kim created! Email: music@mates.com, Password: 123456"
 
 @classmates.each do |classmate|
   new_user = User.new(
     first_name: classmate[0],
     last_name: classmate[1],
-    email: Faker::Internet.safe_email,
+    email: "#{classmate[0]}@#{classmate[1]}.com",
     password: "123456",
     location: "AU",
     avatar: Faker::Avatar.image,
   )
   new_user.photo.attach(io: URI.open(classmate[2]), filename: "#{classmate[0]}-avatar.png", content_type: "image/jpg")
   new_user.save
-  puts "#{new_user.first_name} #{new_user.last_name} created!"
+  puts "#{new_user.first_name} #{new_user.last_name} created!  Email: #{new_user.email}, Password: 123456"
+
+  # CREATE SOME DUMMY FOLLOWS FOR OUR DUMMY USERS
+
+  Follow.create(
+    user: new_user,
+    artist: Artist.find_by(name: "Stormzy")
+  )
+  puts "#{new_user.first_name} #{new_user.last_name} follows Stormzy"
+
+  Follow.create(
+    user: new_user,
+    artist: Artist.find_by(name: "Kehlani")
+  )
+  puts "#{new_user.first_name} #{new_user.last_name} follows Kehlani"
 
   10.times do
     random_artist = all_artists.sample

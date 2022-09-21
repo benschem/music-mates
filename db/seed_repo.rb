@@ -9,5 +9,9 @@ jon = ["Jon", "Santurbano", "https://res.cloudinary.com/benschem/image/upload/v1
 angus = ["Angus", "McDonald", "https://res.cloudinary.com/benschem/image/upload/v1663653909/production/Angus_vpjgvn.jpg"]
 kurt = ["Kurt", "Liu", "https://res.cloudinary.com/benschem/image/upload/v1663653909/production/Kurt_qnnab8.jpg"]
 chris = ["Chris", "Raphael", "https://res.cloudinary.com/benschem/image/upload/v1663653909/production/Chris_ini3sg.jpg"]
+anais = ["Anais", "Pimentel", "https://res.cloudinary.com/benschem/image/upload/v1663733820/production/anais-avatar_vcgj3c.jpg"]
+james = ["James", "Clarence", "https://res.cloudinary.com/benschem/image/upload/v1663733821/production/james-avatar_p2ib2b.jpg"]
+luca = ["Luca", "Severo", "https://res.cloudinary.com/benschem/image/upload/v1663734992/production/luca-avatar_cqqthn.png"]
+matt = ["Matthieu", "Minier", "https://res.cloudinary.com/benschem/image/upload/v1663734992/production/matt-avatar_enfbdb.jpg"]
 
-@classmates = [tony, tae, vince, talina, taneshwar, manon, rylan, jon, angus, kurt, chris]
+@classmates = [tony, tae, vince, talina, taneshwar, manon, rylan, jon, angus, kurt, chris, anais, james, luca, matt]
