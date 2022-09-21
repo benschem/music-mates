@@ -27,9 +27,7 @@ class GroupsController < ApplicationController
     @group = Group.new
     @follows = @concert.artist.follows
     if params[:query].present?
-      sql_query = "users.first_name ILIKE :query OR users.last_name ILIKE :query"
-      @users = User.where(sql_query, query: "%#{params[:query]}%")
-
+      @users = User.search_users(params[:query])
     else
       @users = [] # replace this with search
       @follows.each { |f| @users << f.user }

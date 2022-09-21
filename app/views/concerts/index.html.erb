@@ -1,10 +1,10 @@
 <div id="page-container">
 
-  <h1>Concerts you like</h1>
-  <h2>Invite your mates</h2>
+  <h1 id="h1-basic-styling">Upcoming concerts</h1>
+  <h2 id="h2-basic-styling">Invite your mates!</h2>
 
   <div class="search">
-    <%= render "shared/search-bar" %>
+    <%= render "shared/search-bar", placeholder: "Explore upcoming gigs" %>
   </div>
 
   <% @concerts.each do |concert| %>
