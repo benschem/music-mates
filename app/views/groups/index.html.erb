@@ -1,35 +1,37 @@
 <div id="page-container-groups-index">
+  <div class="group-index">
+    <div class="show">
+      <h1>These are the concerts you're attending!</h1>
+    </div>
 
-  <div class="show">
-    <h1>These are the concerts you're attending!</h1>
-  </div>
-
-  <% if @groups.count >= 1 %>
-    <% @groups.each do |group| %>
-      <%= link_to group_path(group) do %>
-      <% concert = group.concert %>
-        <div class="concert-card">
-          <div class="img-grey" style="background-image: url(<%= concert.artist.image_url %>)"></div>
-          <div class="img-gradient"></div>
-          <div class="concert-info">
-            <h2><strong><%= concert.artist.name %></strong></h2>
-            <p><strong><%= concert.date.strftime("%A %e %B %Y") %></strong></p>
-            <p><%= concert.venue %>, <%= concert.location %></p>
+    <% if @groups.count >= 1 %>
+      <% @groups.each do |group| %>
+        <%= link_to group_path(group) do %>
+        <% concert = group.concert %>
+          <div class="concert-card">
+            <div class="img-grey" style="background-image: url(<%= concert.artist.image_url %>)"></div>
+            <div class="img-gradient"></div>
+            <div class="concert-info">
+              <h2><strong><%= concert.artist.name %></strong></h2>
+              <p><strong><%= concert.date.strftime("%A %e %B %Y") %></strong></p>
+              <p><%= concert.venue %>, <%= concert.location %></p>
+            </div>
+            <div class="concert-avatars">
+              <% concert.users.without_me(current_user).first(5).each do |user|%>
+                <%= cl_image_tag user.photo.key, class: "avatar" %>
+              <% end %>
+              <% if concert.users.without_me(current_user).count > 5 %>
+                <div class="avatar">
+                  <%= concert.users.without_me(current_user).count - 5 %>
+                </div>
+              <% end %>
+            </div>
           </div>
-          <div class="concert-avatars">
-            <% concert.users.without_me(current_user).first(5).each do |user|%>
-              <%= cl_image_tag user.photo.key, class: "avatar" %>
-            <% end %>
-            <% if concert.users.without_me(current_user).count > 5 %>
-              <div class="avatar">
-                <%= concert.users.without_me(current_user).count - 5 %>
-              </div>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
+    <% else %>
+      <p>You're not attending any concerts yet!</p>
+      <div class="sad-duck"><%= image_tag "sad_duck.gif", class: 'sad-duck' %></div>
     <% end %>
-  <% else %>
-    <p>You're not attending any concerts yet!</p>
-  <% end %>
+  </div>
 </div>

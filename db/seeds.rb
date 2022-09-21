@@ -35,13 +35,24 @@ end
 puts "Creating some dummy users..."
 
 User.create!(
-  first_name: "Hunter",
-  last_name: "Shark",
+  first_name: "Music",
+  last_name: "Mates",
   email: "music@mates.com",
   password: "123456",
-  location: "Melbourne",
+  location: "Melbourne"
 )
-puts "Created a User! Name: Hunter Shark, Email: music@mates.com, Password: 123456."
+puts "Created a User! Name: Music Mates, Email: music@mates.com, Password: 123456."
+
+User.create!(
+  first_name: "Hunter",
+  last_name: "Shark",
+  email: "hunter@chomp.com",
+  password: "123456",
+  location: "Sydney"
+)
+puts "Created a User! Name: Hunter Shark, Email: hunter@chomp.com, Password: 123456."
+
+
 
 @classmates.each do |classmate|
   new_user = User.new(
