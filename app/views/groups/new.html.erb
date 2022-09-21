@@ -1,6 +1,7 @@
 <div class="navbar-space"></div>
 
 <h1 id="group-new-h1"><%= @concert.artist.name %></h1>
+<h3>At <%= @concert.venue %></h3>
 
 <div class="friend-list">
 
@@ -9,13 +10,15 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Invite your mates!"
+      placeholder: "Find a mate!"
     %>
     <button name="button" type="submit" class="btn btn-flat">
       <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
     </button>
     <% end %>
   </div>
+
+  <h3>Choose who to invite!</h3>
 
   <div class="create-group">
     <%= simple_form_for [@concert, @group] do |f| %>

@@ -1,7 +1,11 @@
 <div id="page-container-concertshow">
   <div class="show">
     <%= image_tag @concert.artist.image_url, class: "show-image" %>
-    <h1 id="show-h1"><%= @concert.artist.name %></h1>
+    TODO: <%= @concert.artist.name %> centered in the image above
+
+    <h1 id="show-h1">Want to go?</h1>
+    <p>Create a group to invite some friends!</p>
+
     <div class="show-detail-container">
       <div class="show-emoji">
         📅
@@ -9,6 +13,7 @@
       <div class="show-detail">
         <h2><%= @concert.date.strftime("%A %e %B %Y") %></h2>
         <h3>From <%= @concert.date.strftime("%l:%M %P %Z") %></h3>
+        <%# TIME DOES NOT WORK %>
         <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
       </div>
     </div>
@@ -17,8 +22,8 @@
         📍
       </div>
       <div class="show-detail">
-        <h2><%= @concert.location %></h2>
-        <h3>From <%= @concert.venue %></h3>
+        <h2>At <%= @concert.venue %></h2>
+        <h3>In <%= @concert.location %></h3>
       </div>
     </div>
     <div class="show-detail-container">
