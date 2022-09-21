@@ -20,3 +20,7 @@
 #query {
   border-radius: 18px;
 }
+
+#query:focus {
+  box-shadow: none;
+}

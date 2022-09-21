@@ -1,8 +1,10 @@
 #page-container-profile {
   margin-top: 80px;
-
 }
 
+.search-bar-bootstrap {
+  margin-top: 20px;
+}
 .flexbox {
   display: flex;
   justify-content: space-between;
@@ -10,8 +12,8 @@
 }
 
 .profile-artist-avatar {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
 }
 
@@ -30,6 +32,17 @@
   font-size: larger;
   font-family: revert;
   font-weight: bolder;
+}
+.username-bootstrap {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  color: #2b3a67;
+
+}
+.username-attending {
+  margin-top: 25px;
+  color: #2b3a67;
+
 }
 
 .profile-artist-cards {

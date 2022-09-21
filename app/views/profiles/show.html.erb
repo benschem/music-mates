@@ -1,8 +1,7 @@
   <%= render "shared/navbar" %>
 
 <div id="page-container-profile">
-
-  <div class="search-bar">
+  <div class="search-bar search-bar-bootstrap">
     <%= form_with url: search_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
           params[:query],
@@ -12,19 +11,19 @@
     <% end %>
   </div>
 
-<div class="show-detail-container">
-  <% if @user.photo.attached? %>
+
+<h2 class="text-center mb-0 fs-6 fw-bold username-bootstrap"><% if @user.photo.attached? %>
     <%= cl_image_tag @user.photo.key, class: "avatar" %>
   <% else %>
     <%= image_tag "Vince", class: "avatar" %>
   <% end %>
-  <%= @user.first_name + " " + @user.last_name %>
+  You're viewing <%= @user == current_user ? "your own" : @user.first_name + "'s" %> profile
 </div>
 
 
 <div class="container px-4">
 
-<h2 class="text-center mb-0"><%= @user.first_name %>'s favorite artists</h2>
+<h2 class="text-center mb-0 fw-bold username-attending"><%= @user == current_user ? "Your" : @user.first_name + "'s" %> top artists</h2>
   <ul class="profile-artist-cards">
     <% @top_artists.each do |artist| %>
       <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= artist.image_url %>'); background-size: cover">
@@ -39,11 +38,11 @@
 <%# tart up the UI %>
 <div class="container px-4">
 
-<h2 class="text-center mb-0"><%= @user.first_name %> is attending..</h2>
+<h2 class="text-center mb-0 fw-bold"><%= @user == current_user ? "You" : @user.first_name %> will be attending..</h2>
  <ul class="profile-artist-cards">
-    <% @top_artists.each do |artist| %>
-      <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= artist.image_url %>'); background-size: cover">
-        <h3 class="fs-10 fw-bold text-white"><%= artist.name %></h3>
+    <% @user.groups.each do |group| %>
+      <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= group.concert.artist.image_url %>'); background-size: cover">
+        <h3 class="fs-10 fw-bold text-white"><%= group.concert.artist.name %></h3>
       </li>
     <% end %>
   </ul>
