@@ -1,0 +1,10 @@
+<div class="btn-decline">
+  <%= link_to "decline",
+  data-controller="sweet-alert"
+  data-action="click->sweet-alert#fireModal"
+  data-sweet-alert-title-value="A nice alert"
+  data-sweet-alert-text-value="This is a great alert, isn't it?"
+  data-sweet-alert-icon-value="success",
+  invitation_path(invite, status: 2), data: { turbo_method: :patch }
+  %>
+</div>
