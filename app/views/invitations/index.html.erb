@@ -39,8 +39,8 @@
         </div>
             <!-- invite.status -->
             <div class="status-buttons">
-              <%= render "accepted_button" %>
-              <%= render "declined_button" %>
+              <%= render "accept_button", invite: invite %>
+              <%= render "decline_button", invite: invite %>
             </div>
             <% else %>
               <p>You've <%= invite.status %> an invitation for <%= concert.artist.name %></p>

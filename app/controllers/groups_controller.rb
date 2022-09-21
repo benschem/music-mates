@@ -44,8 +44,8 @@ class GroupsController < ApplicationController
   end
 
   def index
-    # @groups = Group.joins(:invitations).where('invitations.user_id = ?', current_user.id)
-    @groups = current_user.groups
+    @groups = Group.joins(:invitations).where('invitations.user_id = ?', current_user.id)
+    # @groups = current_user.groups
   end
 
   private
