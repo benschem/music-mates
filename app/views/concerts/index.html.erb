@@ -4,7 +4,6 @@
     <%= render "shared/search-bar" %>
   </div>
 
-  <!-- AVATARS needs to be in Cloudinary-->
   <% @concerts.each do |concert| %>
     <%= link_to concert_path(concert), class: "concert-a" do %>
       <div class="concert-card">
@@ -18,7 +17,6 @@
         <div class="concert-avatars">
           <% concert.users.without_me(current_user).first(5).each do |user|%>
             <%= cl_image_tag user.photo.key, class: "avatar" %>
-            <%# <%= image_tag user.avatar, class: "avatar" %>
           <% end %>
           <% if concert.users.without_me(current_user).count > 5 %>
             <div class="avatar">
@@ -29,4 +27,10 @@
       </div>
     <% end %>
   <% end %>
+
+  <div>
+    <%= link_to "Check for new concerts!", fetch_concerts_concerts_path, data: {turbo_method: :patch} %>
+    <p>This might take 60 - 90 seconds...</p>
+  </div>
+
 </div>
