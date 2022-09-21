@@ -9,7 +9,6 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find(params[:id])
     @invitation.status = params[:status].to_i
     @invitation.save
-    flash.alert = "Test"
     redirect_to invitations_path
   end
 end
