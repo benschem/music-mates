@@ -1,0 +1,12 @@
+<% if concert.users.without_me(current_user).count != 0 %>
+  <% concert.users.without_me(current_user).first(5).each do |user|%>
+    <%= cl_image_tag user.photo.key, class: "avatar" %>
+  <% end %>
+  <% if concert.users.without_me(current_user).count > 5 %>
+    <div class="avatar">
+      + <%= concert.users.without_me(current_user).count - 5 %>
+    </div>
+  <% end %>
+<% else %>
+  <div> No friends follow this artist!</div>
+<% end %>
