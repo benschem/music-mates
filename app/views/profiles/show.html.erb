@@ -1,15 +1,16 @@
   <%= render "shared/navbar" %>
-
-<div id="page-container-profile">
-  <div class="search-bar search-bar-bootstrap">
-    <%= form_with url: search_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find your friends!" %>
-      <%= submit_tag "Search", class: "btn btn-flat" %>
-    <% end %>
-  </div>
+  <div id="page-container-profile">
+  <div class="search">
+  <div class="shared/search-bar">
+  <%= form_with url: search_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find your friends!"%>
+    <%= image_submit_tag("icons8-search-30.png", class: "btn btn-flat") %>
+    </div>
+  <% end %>
+</div>
 
 
 <h2 class="text-center mb-0 fs-6 fw-bold username-bootstrap"><% if @user.photo.attached? %>
@@ -18,6 +19,17 @@
     <%= image_tag "Vince", class: "avatar" %>
   <% end %>
   You're viewing <%= @user == current_user ? "your own" : @user.first_name + "'s" %> profile
+
+<div class="container px-4">
+
+<h2 class="text-center mb-0 fw-bold username-attending"><%= @user == current_user ? "You" : @user.first_name %> will be attending</h2>
+ <ul class="profile-artist-cards">
+    <% @user.groups.each do |group| %>
+      <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= group.concert.artist.image_url %>'); background-size: cover">
+        <h3 class="fs-10 fw-bold text-white"><%= group.concert.artist.name %></h3>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
 
@@ -36,14 +48,3 @@
 
 <%# change from artists to concerts attending %>
 <%# tart up the UI %>
-<div class="container px-4">
-
-<h2 class="text-center mb-0 fw-bold"><%= @user == current_user ? "You" : @user.first_name %> will be attending..</h2>
- <ul class="profile-artist-cards">
-    <% @user.groups.each do |group| %>
-      <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= group.concert.artist.image_url %>'); background-size: cover">
-        <h3 class="fs-10 fw-bold text-white"><%= group.concert.artist.name %></h3>
-      </li>
-    <% end %>
-  </ul>
-</div>
