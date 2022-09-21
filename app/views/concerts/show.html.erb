@@ -1,10 +1,11 @@
 <div id="page-container-concertshow">
   <div class="show">
-    <%= image_tag @concert.artist.image_url, class: "show-image" %>
-    TODO: <%= @concert.artist.name %> centered in the image above
-
+    <div class="concert-header-center">
+      <%= image_tag @concert.artist.image_url, class: "show-image" %>
+      <h1 id="h1-basic-styling">TODO: <%= @concert.artist.name %> centered in the image above</h1>
+    </div>
     <h1 id="show-h1">Want to go?</h1>
-    <p>Create a group to invite some friends!</p>
+    <h2 id="h2-basic-styling">Create a group to invite some friends!</p>
 
     <div class="show-detail-container">
       <div class="show-emoji">
