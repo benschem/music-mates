@@ -4,7 +4,6 @@
   align-items: center;
 
   h1 {
-
     text-align: center;
     color: #2b3a67;
     font-weight: 700;
@@ -18,7 +17,7 @@
     font-size: 14px;
   }
 
-  .status-buttons {
+ tatus-buttons {
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -73,5 +72,14 @@
       border: 1px solid white;
       transform: scale(1.02);
     }
+  }
+  p {
+    text-align: center;
+  }
+  .sad-duck{
+    display: block;
+    margin: auto;
+    width: 100%;
+    border-radius: 70%;
   }
 }
