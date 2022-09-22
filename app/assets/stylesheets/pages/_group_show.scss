@@ -1,0 +1,32 @@
+.group-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color:#2b3a67;
+  border-radius: 16px;
+  margin: 18px auto;
+  padding: 8px;
+  width: 85%;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+
+  h1 {
+    color: white;
+    width: 90%;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 0.3px solid white;
+  }
+
+}
+
+.info-group {
+  width: 90%;
+  margin: 7px 0;
+  color: white;
+
+  p {
+    margin-bottom: 2px;
+  }
+}

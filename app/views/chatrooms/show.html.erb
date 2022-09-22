@@ -1,6 +1,6 @@
 <div class="navbar-space"></div>
 <div class="chatroom">
-  <h1 id="chatroom-name"><%= @chatroom.name %></h1>
+  <h1 id="chatroom-name"><%= link_to "#{@chatroom.name}", group_path(@group) %></h1>
   <div class="chatroom-friends">
     <h6> Mates: </h6>
     <div id="chatroom-friend-avatars">

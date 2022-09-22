@@ -2,20 +2,23 @@
 
 <div class="show">
 
-  <div>
-    <%= image_tag @concert.artist.image_url, class: "show-image" %>
-    TODO: Move artist name into middle of photo
-    <h1><%= @concert.artist.name %></h1>
+  <div class="concert-header-center">
+    <div class="img-color" style="background-image: url(<%= @concert.artist.image_url %>)"></div>
+    <div class="img-gradient"></div>
+    <h1 id="h1-basic-styling"> <%= @concert.artist.name %> </h1>
   </div>
 
-  <h1 >You're going! </h1>
-
-  <div>
-    <p>📅 On <%= @concert.date.strftime("%A %e %B %Y") %></p>
-    <p>From <%= @concert.date.strftime("%l:%M %P %Z") %></p>
+  <div class="group-info-container">
+    <h1>You're going!</h1>
+    <div class="info-group">
+      <p>📅 On <%= @concert.date.strftime("%A %e %B %Y") %></p>
+      <p>From <%= @concert.date.strftime("%l:%M %P %Z") %></p>
+    </div>
     <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
-    <p>📍 At <%= @concert.venue %></p>
-    <p>In <%= @concert.location %></p>
+    <div class="info-group">
+      <p>📍 At <%= @concert.venue %></p>
+      <p>In <%= @concert.location %></p>
+    </div>
   </div>
 
   <h2>🧑‍🤝‍🧑 <%= pluralize(@concert.users.without_me(current_user).count, 'mate') %> are invited</h2>

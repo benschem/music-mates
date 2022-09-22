@@ -14,6 +14,7 @@
     color: #2B3A67;
     text-align: center;
     font-weight: 700;
+
   }
 
   .messages {
@@ -53,5 +54,9 @@
     #chatroom-friend-avatars {
       flex-grow: 1;
     }
+  }
+  a {
+    text-decoration: none;
+    color: #2B3A67;
   }
 }
