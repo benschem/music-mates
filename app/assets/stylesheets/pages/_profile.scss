@@ -32,10 +32,11 @@
   font-weight: bolder;
 }
 .username-bootstrap {
-  margin-top: 26px;
-  margin-bottom: 18px;
-  color: #2b3a67;
-
+  margin: 20px;
+  border-radius: 8px;
+  color: white;
+  background-color: $dark-blue;
+  width: 90%;
 }
 .username-attending {
   margin-top: 25px;
