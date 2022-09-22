@@ -2,10 +2,10 @@
 
 <div class="show">
 
-  <div>
-    <%= image_tag @concert.artist.image_url, class: "show-image" %>
-    TODO: Move artist name into middle of photo
-    <h1><%= @concert.artist.name %></h1>
+  <div class="concert-header-center">
+    <div class="img-color" style="background-image: url(<%= @concert.artist.image_url %>)"></div>
+    <div class="img-gradient"></div>
+    <h1 id="h1-basic-styling"> <%= @concert.artist.name %> </h1>
   </div>
 
   <h1 >You're going! </h1>
