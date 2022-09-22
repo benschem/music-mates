@@ -5,11 +5,16 @@ class InvitationsController < ApplicationController
 
   def create; end
 
-  def update
+  def accept
     @invitation = Invitation.find(params[:id])
-    @invitation.status = params[:status].to_i
-    @invitation.save
+    @invitation.accepted!
     sleep 2
+    redirect_to concerts_path
+  end
+
+  def decline
+    @invitation = Invitation.find(params[:id])
+    @invitation.declined!
     redirect_to invitations_path
   end
 end

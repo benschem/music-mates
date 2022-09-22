@@ -1,5 +1,5 @@
 <%= link_to "Accept",
-    invitation_path(invite, status: 1),
+    accept_invitation_path(invite),
     class: "accept",
     data: { turbo_method: :patch,
             controller: "sweet-alert",
