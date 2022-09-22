@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
     @top_artists = @user.artists.first(10)
   end
 
-  def searchs
+  def search
     # Search based on what the user typed in
     ##  params[:query] gives what user typed in
     # Get the user
@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
 
     # Call the show action to display the user
     # We need a fail safe
+    # raise
     redirect_to profile_path(user)
   end
 end

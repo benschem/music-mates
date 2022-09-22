@@ -24,7 +24,12 @@ Rails.application.routes.draw do
   get "groups/:id/chatroom", to: "chatrooms#show", as: :chatroom
 
   # group_id/chatroom
-  resources :invitations, only: %i[index update]
+  resources :invitations, only: %i[index] do
+    member do
+      patch :accept
+      patch :decline
+    end
+  end
   resources :profiles, only: :show
 
   get "search", to: "profiles#search", as: "search"
