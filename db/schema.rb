@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_083221) do
     t.string "latitude"
     t.string "longitude"
     t.string "country"
+    t.string "city"
     t.index ["artist_id"], name: "index_concerts_on_artist_id"
   end
 
