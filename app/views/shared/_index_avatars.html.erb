@@ -1,7 +1,10 @@
 <% if concert.users.without_me(current_user).count != 0 %>
-  <% concert.users.without_me(current_user).first(5).each do |user|%>
-    <%= cl_image_tag user.photo.key, class: "avatar" %>
-  <% end %>
+
+  <div class="avatar-container">
+    <% concert.users.without_me(current_user).first(5).each do |user|%>
+      <%= cl_image_tag user.photo.key, class: "avatar" %>
+    <% end %>
+  </div>
   <% if concert.users.without_me(current_user).count > 5 %>
     <div class="avatar-overflow">
       + <%= concert.users.without_me(current_user).count - 5 %>

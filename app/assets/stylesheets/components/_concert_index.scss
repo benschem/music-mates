@@ -72,8 +72,6 @@ a {
 .concert-avatars {
   color: white;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .avatar-overflow {
@@ -83,6 +81,7 @@ a {
   justify-content: left;
   align-items: center;
   font-size: 13px;
+  margin: 5px;
 }
 
 //
