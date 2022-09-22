@@ -1,5 +1,5 @@
 <%= link_to "Decline",
-    invitation_path(invite, status: 2),
+    decline_invitation_path(invite),
     class: "decline",
     data: { turbo_method: :patch,
             controller: "sweet-alert",

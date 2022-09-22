@@ -17,12 +17,12 @@
               <p><%= concert.venue %>, <%= concert.location %></p>
             </div>
             <div class="concert-avatars">
-              <% concert.users.without_me(current_user).first(5).each do |user|%>
+              <% group.users.without_me(current_user).first(5).each do |user|%>
                 <%= cl_image_tag user.photo.key, class: "avatar" %>
               <% end %>
-              <% if concert.users.without_me(current_user).count > 5 %>
+              <% if group.users.without_me(current_user).count > 5 %>
                 <div class="avatar">
-                  <%= concert.users.without_me(current_user).count - 5 %>
+                  <%= group.users.without_me(current_user).count - 5 %>
                 </div>
               <% end %>
             </div>

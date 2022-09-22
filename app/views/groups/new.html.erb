@@ -3,7 +3,9 @@
   <h1 id="group-new-h1"><%= @concert.artist.name %></h1>
   <h3 class="groups-new-h3">At <%= @concert.venue %></h3>
 
+
   <div class="friend-list">
+
 
     <div class="search">
       <%= render "shared/search-bar", placeholder: "Choose who to invite!", path: new_concert_group_path %>
