@@ -69,19 +69,62 @@ a {
   z-index: 500;
 }
 
+.concert-avatars {
+  color: white;
+  display: flex;
+}
+
+.avatar-overflow {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 13px;
+  margin: 0 5px;
+  margin-top: 2px;
+
+}
+
+.refresher {
+  align-content: center;
+  p {
+    text-align: center;
+    color: black;
+    margin: 2px;
+  }
+  a {
+    text-decoration: none;
+    color: $success;
+    font-size: 20px;
+    background-color: $success;
+  }
+}
+
+.a-tag-center {
+  display: block;
+  text-align: center;
+}
 //
 
 #h1-basic-styling {
   text-align: center;
+  margin: 0;
   font-size: 28px;
-  color:#2B3A67;
+  color:white;
   font-weight: 700;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: auto;
+  z-index: 700;
 }
 
 #h2-basic-styling {
   text-align: center;
-  font-size: 24px;
+  font-size: 16px;
   color: #2B3A67;
+  font-weight: 700;
 }
 
 .p1-basic-styling {

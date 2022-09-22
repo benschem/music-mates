@@ -1,31 +1,62 @@
 .chatroom {
-  background: white;
   margin-top: 9px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+  height: calc(100vh - 75px);
+  max-height: 550px;
 
   h1 {
     border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
-    padding: 1rem;
+    padding: 0.3rem;
+    color: #2B3A67;
+    text-align: center;
+    font-weight: 700;
+
   }
 
   .messages {
-    height: 390px;
+    min-height: 400px;
+    height: 100%;
     overflow: scroll;
     padding: 1rem;
   }
 
   #new_message {
     border-top: 1px solid $gray-200;
-    padding: 1rem;
+    padding: 5px;
     padding-bottom: 0;
     margin-bottom: 0;
 
     .form-group {
       margin-bottom: 0;
     }
+  }
+  .chatroom-friends {
+    border-bottom: 1px solid $gray-200;
+    margin-bottom: 0;
+    padding: 0.5rem;
+    margin: 0.3rem;
+    display: flex;
+    justify-content: space-around;
+    background-color: #2B3A67;
+    border-radius: 50px;
+    h6 {
+      text-align: left;
+      margin: auto;
+      margin-left: 5px;
+      margin-right: 5px;
+      font-weight: 700;
+      color: white
+    }
+    #chatroom-friend-avatars {
+      flex-grow: 1;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: #2B3A67;
   }
 }

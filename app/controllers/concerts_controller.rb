@@ -36,7 +36,6 @@ class ConcertsController < ApplicationController
     end
   end
 
-
   def concerts_from_api_for(artist)
     potential_concerts = HTTParty.get("https://rest.bandsintown.com/artists/#{url_encode(artist.name)}/events?app_id=#{ENV["BANDS_IN_TOWN_KEY"]}&date=upcoming")
     potential_concerts[0] && potential_concerts[0]["datetime"] ? potential_concerts : false

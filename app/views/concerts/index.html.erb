@@ -1,7 +1,7 @@
 <div id="page-container">
 
-  <h1 id="h1-basic-styling">Upcoming concerts</h1>
-  <h2 id="h2-basic-styling">Invite your mates!</h2>
+  <h1>Upcoming concerts</h1>
+  <h2>Invite your mates</h2>
 
   <div class="search">
     <%= render "shared/search-bar", placeholder: "Explore upcoming gigs", path: concerts_path %>
@@ -18,17 +18,18 @@
           <p><%= concert.venue %>, <%= concert.city %></p>
         </div>
         <div class="concert-avatars">
+
           <%= render "shared/index_avatars", concert: concert%>
+
         </div>
       </div>
     <% end %>
   <% end %>
 
-  <div class= "text-center">
-    <%= link_to "Check for new concerts!", fetch_concerts_concerts_path, data: {turbo_method: :patch} %>
-
-    <p class= "p1-basic-styling text-center">This might take 60 - 90 seconds...</p>
-    <p class= "p1-basic-styling text-center">Please do not refresh the page after clicking.</p>
+  <div class="refresher">
+    <div class="a-tag-center"><%= link_to "Check for new concerts!", fetch_concerts_concerts_path, data: {turbo_method: :patch} %></div>
+    <p>This might take 60 - 90 seconds...</p>
+    <p>Please do not refresh the page after clicking.</p>
   </div>
 
 </div>

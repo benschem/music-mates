@@ -69,4 +69,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   # Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Enable ngrok
+  config.hosts << "2b68-27-32-52-186.au.ngrok.io"
 end

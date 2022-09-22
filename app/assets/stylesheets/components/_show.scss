@@ -18,7 +18,7 @@
 }
 
 #show-h1 {
-  margin-top: 23px;
+  margin-top: 15px;
   font-size: 22px;
   font-weight: 700;
 }
@@ -31,9 +31,12 @@
   padding: 13px;
   margin: 0 auto;
   border-radius: 16px;
+  max-height: 100px;
+  overflow: scroll;
   p {
     color: #2b3a67;
-    font-size: 11px;
+    font-size: 14px;
+    margin-bottom: 0;
   }
 }
 
@@ -158,13 +161,67 @@
 #show-btn-container {
   width: 80%;
   margin: 20px auto;
+  margin-top: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .concert-header-center {
-  margin: auto;
-  position: relative;
   text-align: center;
+  position: relative;
+  width: 375px;
+  height: 250px;
+  background-size: cover;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.img-color {
+  position: absolute;
+  background-size: cover;
+  height: 102%;
+  width: 102%;
+  z-index: 100;
+  top: -2%;
+  left: -2%;
+}
+
+.show-detail-container-last {
+  display: flex;
+  flex-direction: row;
+  margin: 17px auto;
+  width: 310px;
+  padding: 10px;
+  background-color: #2b3a67;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  justify-content: space-around;
+  align-items: center;
+
+  .show-emoji {
+    width: 50px;
+    font-size: 34px;
+    text-align: center;
+  }
+
+  .show-detail{
+    padding: 3px;
+    justify-content: left;
+    flex-grow: 1;
+
+    h2 {
+      font-weight: 500;
+      font-size: 15px;
+      color: white;
+      margin-bottom: 3px;
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 300;
+      color: white;
+      margin-bottom: 0;
+    }
+  }
 }

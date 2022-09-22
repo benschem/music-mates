@@ -1,27 +1,29 @@
-<div class="navbar-space"></div>
+<div id="page-container">
 
-<h1 id="group-new-h1"><%= @concert.artist.name %></h1>
-<h3 class= "text-center mb-0 fw-bold username-attending">At <%= @concert.venue %></h3>
+  <h1 id="group-new-h1"><%= @concert.artist.name %></h1>
+  <h3 class="groups-new-h3">At <%= @concert.venue %></h3>
 
-<div class="friend-list">
 
-  <div class="search">
-    <%= render "shared/search-bar", placeholder: "Find a mate!", path: new_concert_group_path %>
+  <div class="friend-list">
+
+
+    <div class="search">
+      <%= render "shared/search-bar", placeholder: "Choose who to invite!", path: new_concert_group_path %>
+    </div>
+
+    <div class="create-group">
+      <%= simple_form_for [@concert, @group] do |f| %>
+          <% @users.each do |user| %>
+          <% next if user == current_user  %>
+          <div class="friends-invite"> <div class="avatar-name d-flex align-items-center">
+            <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
+            <p class="ms-2 mb-0"><%= user.first_name + " " + user.last_name %></p>
+          </div>
+          <%= check_box_tag 'user_ids[]', user.id %></div>
+          <% end %>
+        <%= f.submit "Make a group!", id: "group-btn" %>
+      <% end %>
+    </div>
   </div>
 
-  <h3 class= "text-center mb-0 fw-bold username-attending">Choose who to invite!</h3>
-
-  <div class="create-group">
-    <%= simple_form_for [@concert, @group] do |f| %>
-        <% @users.each do |user| %>
-        <% next if user == current_user  %>
-        <div class="friends-invite"> <div class="avatar-name d-flex align-items-center">
-          <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
-          <p class="ms-2 mb-0"><%= user.first_name + " " + user.last_name %></p>
-        </div>
-        <%= check_box_tag 'user_ids[]', user.id %></div>
-        <% end %>
-      <%= f.submit "Make a group!", id: "group-btn" %>
-    <% end %>
-  </div>
 </div>
