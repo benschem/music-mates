@@ -6,14 +6,16 @@ export default class extends Controller {
   static values = {
     title: String,
     text: String,
-    icon: String
+    icon: String,
+    buttons: Boolean,
   }
 
   fireModal() {
     swal({
       title: this.titleValue,
       text: this.textValue,
-      icon: this.iconValue
+      icon: this.iconValue,
+      buttons: this.buttonValue
     });
   }
 }
