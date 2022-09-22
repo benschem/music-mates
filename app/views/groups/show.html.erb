@@ -21,13 +21,42 @@
     </div>
   </div>
 
-  <h2>🧑‍🤝‍🧑 <%= pluralize(@concert.users.without_me(current_user).count, 'mate') %> are invited</h2>
+  <h2>🧑‍🤝‍🧑 Awaiting response from <%= pluralize(@pending_invitations.count, 'mate') %></h2>
+  <div>
+    <% if @pending_invitations.empty? %>
+      <div>Everybody has responded.</div>
+    <% else %>
+      <div class="avatar-container">
+        <% @pending_invitations.first(5).each do |invitation|%>
+          <%= cl_image_tag invitation.user.photo.key, class: "avatar" %>
+        <% end %>
+      </div>
+      <% if @pending_invitations.count > 5 %>
+        <div class="avatar-overflow">
+          + <%= @pending_invitations.count - 5 %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-    <div>
-      <%= render "shared/index_avatars", concert: @concert %>
-    </div>
+  <h2>🧑‍🤝‍🧑 <%= pluralize(@accepted_invitations.count, 'mate') %> going</h2>
+  <div>
+    <% if @accepted_invitations.empty? %>
+      <div>Nobody has said they're going yet!</div>
+    <% else %>
+      <div class="avatar-container">
+        <% @accepted_invitations.each do |invitation|%>
+          <%= cl_image_tag invitation.user.photo.key, class: "avatar" %>
+        <% end %>
+      </div>
+      <% if @accepted_invitations.count > 5 %>
+        <div class="avatar-overflow">
+          + <%= @accepted_invitations.count - 5 %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-  TODO: Button does not link to chatroom, so don't click it as it will make a new group.
   <div id="show-btn-container">
     <%= link_to "Chat with this group!", chatroom_path(@group), id:"show-btn" %>
   </div>
