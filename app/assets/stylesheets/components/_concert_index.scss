@@ -84,6 +84,25 @@ a {
   margin: 0 5px;
 }
 
+.refresher {
+  align-content: center;
+  p {
+    text-align: center;
+    color: black;
+    margin: 2px;
+  }
+  a {
+    text-decoration: none;
+    color: $success;
+    font-size: 20px;
+    background-color: $success;
+  }
+}
+
+.a-tag-center {
+  display: block;
+  text-align: center;
+}
 //
 
 #h1-basic-styling {
@@ -105,5 +124,3 @@ a {
   color: #2B3A67;
   font-weight: 700;
 }
-
-//

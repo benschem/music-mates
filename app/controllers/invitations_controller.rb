@@ -9,6 +9,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find(params[:id])
     @invitation.status = params[:status].to_i
     @invitation.save
+    sleep 2
     redirect_to invitations_path
   end
 end

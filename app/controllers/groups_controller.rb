@@ -25,12 +25,11 @@ class GroupsController < ApplicationController
   def new
     @concert = Concert.find(params[:concert_id])
     @group = Group.new
-    @follows = @concert.artist.follows
+    # users who are following the same artist. The artist is connected through the concert
     if params[:query].present?
       @users = User.search_users(params[:query])
     else
-      @users = [] # replace this with search
-      @follows.each { |f| @users << f.user }
+      @users = User.joins(:follows, :artists, :concerts).where('concerts.id = ?', @concert.id).uniq
     end
   end
 
@@ -42,12 +41,9 @@ class GroupsController < ApplicationController
 
   def index
     # @groups = Group.joins(:invitations).where('invitations.user_id = ?', current_user.id)
+    @groups = Group.joins(:invitations).where('invitations.user_id = ? AND invitations.status = ?', current_user.id, 1)
     # @groups = current_user.groups
-    @invites = Invitation.where(status: "accepted")
-    @groups = []
-    @invites.each do |invite|
-      @groups << invite.group
-    end
+    @invites = @groups.map { |group| group.invitations }.flatten
   end
 
   private

@@ -19,15 +19,15 @@
         </div>
         <div class="concert-avatars">
 
-          <%= render "shared/index_avatars", concert: concert%>
-          
+          <%= render "shared/index_avatars", concert: concert %>
+
         </div>
       </div>
     <% end %>
   <% end %>
 
-  <div>
-    <%= link_to "Check for new concerts!", fetch_concerts_concerts_path, data: {turbo_method: :patch} %>
+  <div class="refresher">
+    <div class="a-tag-center"><%= link_to "Check for new concerts!", fetch_concerts_concerts_path, data: {turbo_method: :patch} %></div>
     <p>This might take 60 - 90 seconds...</p>
     <p>Please do not refresh the page after clicking.</p>
   </div>
