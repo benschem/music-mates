@@ -69,6 +69,22 @@ a {
   z-index: 500;
 }
 
+.concert-avatars {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.avatar-overflow {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 13px;
+}
+
 //
 
 #h1-basic-styling {
