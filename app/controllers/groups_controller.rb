@@ -38,6 +38,9 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @concert = Concert.find(@group.concert.id)
     @message = Message.new
+
+    @accepted_invitations = @group.invitations.where(status: "accepted").includes(:user)
+    @pending_invitations = @group.invitations.where(status: "pending").includes(:user)
   end
 
   def index
