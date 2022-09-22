@@ -3,7 +3,6 @@
   <div class="search">
     <%= render "shared/search-bar", placeholder: "Find your friends!", path: search_path %>
   </div>
-  <div id="page-container">
     <div class="text-center py-2 fs-1 fw-bold username-bootstrap">
       <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, class: "avatar avatar-show" %>
@@ -52,5 +51,4 @@
         <% end %>
       </ul>
     </div>
-  </div>
 </div>
