@@ -31,11 +31,12 @@
   padding: 13px;
   margin: 0 auto;
   border-radius: 16px;
-  height: 100px;
+  max-height: 100px;
   overflow: scroll;
   p {
     color: #2b3a67;
-    font-size: 11px;
+    font-size: 14px;
+    margin-bottom: 0;
   }
 }
 
@@ -160,6 +161,7 @@
 #show-btn-container {
   width: 80%;
   margin: 20px auto;
+  margin-top: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
