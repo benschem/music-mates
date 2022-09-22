@@ -81,22 +81,29 @@ a {
   justify-content: left;
   align-items: center;
   font-size: 13px;
-  margin: 5px;
+  margin: 0 5px;
 }
 
 //
 
 #h1-basic-styling {
   text-align: center;
+  margin: 0;
   font-size: 28px;
-  color:#2B3A67;
+  color:white;
   font-weight: 700;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: auto;
+  z-index: 700;
 }
 
 #h2-basic-styling {
   text-align: center;
-  font-size: 24px;
+  font-size: 16px;
   color: #2B3A67;
+  font-weight: 700;
 }
 
 //
