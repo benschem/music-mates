@@ -1,56 +1,75 @@
 <%= render "shared/navbar" %>
+
 <div id="page-container-profile">
+<div class="search">
+  <%= render "shared/search-bar", placeholder: "Find your friends!", path: search_path %>
+</div>
+
+<div id="page-container-profile">
+<div id="page-container">
+
   <div class="search">
-    <%= render "shared/search-bar", placeholder: "Find your friends!", path: search_path %>
+    <div class="shared/search-bar">
+    <%= form_with url: search_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find your friends!"%>
+      <%= image_submit_tag("icons8-search-30.png", class: "btn btn-flat") %>
+    <% end %>
+    </div>
   </div>
-  <div id="page-container">
-    <div class="text-center py-2 fs-1 fw-bold username-bootstrap">
-      <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, class: "avatar avatar-show" %>
-      <% else %>
-        <%= image_tag "Vince", class: "avatar" %>
-      <% end %>
-      <%= @user.first_name + " " + @user.last_name %>
-    </div>
-    <h1>
-    </h1>
-    <div class="container px-4">
-      <h2 class="text-center mb-0 fw-bold fs-5 username-attending">
-        Upcoming concerts
-      </h2>
-      <% if @user.groups.empty? && @user == current_user %>
-        <ul class="profile-artist-cards">
-          <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(''); background-size: cover">
-            <h3 class="fs-10 fw-bold text-white text-center"> You are not going to anything yet!</h3>
-          </li>
-        </ul>
-      <% elsif @user.groups.empty? %>
-        <ul class="profile-artist-cards">
-          <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(''); background-size: cover">
-            <h3 class="fs-10 fw-bold text-white text-center"> <%= @user.first_name %> is not going to anything yet!</h3>
-          </li>
-        </ul>
-      <% else %>
-        <ul class="profile-artist-cards">
-          <% @user.groups.each do |group| %>
-            <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= group.concert.artist.image_url %>'); background-size: cover">
-              <h3 class="fs-10 fw-bold text-white"><%= group.concert.artist.name %></h3>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-    <div class="container px-4">
-      <h2 class="text-center mb-0 fs-5 fw-bold username-attending">
-        Favourite artists
-      </h2>
+
+  <div class="text-center py-2 fs-1 fw-bold username-bootstrap">
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, class: "avatar avatar-show" %>
+    <% else %>
+      <%= image_tag "Vince", class: "avatar" %>
+    <% end %>
+    <%= @user.first_name + " " + @user.last_name %>
+  </div>
+  <h1>
+  </h1>
+
+  <div class="container px-4">
+    <h2 class="text-center mb-0 fw-bold fs-5 username-attending">
+      Upcoming concerts
+    </h2>
+
+    <% if @user.groups.empty? && @user == current_user %>
       <ul class="profile-artist-cards">
-        <% @top_artists.each do |artist| %>
-          <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= artist.image_url %>'); background-size: cover">
-            <h3 class="fs-10 fw-bold text-white"><%= artist.name %></h3>
+        <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(''); background-size: cover">
+          <h3 class="fs-10 fw-bold text-white text-center"> You are not going to anything yet!</h3>
+        </li>
+      </ul>
+    <% elsif @user.groups.empty? %>
+      <ul class="profile-artist-cards">
+        <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(''); background-size: cover">
+          <h3 class="fs-10 fw-bold text-white text-center"> <%= @user.first_name %> is not going to anything yet!</h3>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="profile-artist-cards">
+        <% @user.groups.each do |group| %>
+          <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= group.concert.artist.image_url %>'); background-size: cover">
+            <h3 class="fs-10 fw-bold text-white"><%= group.concert.artist.name %></h3>
           </li>
         <% end %>
       </ul>
-    </div>
+    <% end %>
+  </div>
+
+  <div class="container px-4">
+    <h2 class="text-center mb-0 fs-5 fw-bold username-attending">
+      Favourite artists
+    </h2>
+    <ul class="profile-artist-cards">
+      <% @top_artists.each do |artist| %>
+        <li class="card-info" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= artist.image_url %>'); background-size: cover">
+          <h3 class="fs-10 fw-bold text-white"><%= artist.name %></h3>
+        </li>
+      <% end %>
+    </ul>
+  </div>
   </div>
 </div>
