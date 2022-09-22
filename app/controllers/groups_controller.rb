@@ -37,7 +37,6 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @concert = Concert.find(@group.concert.id)
-    @chatroom = Chatroom.find(@group.chatroom.id)
     @message = Message.new
   end
 

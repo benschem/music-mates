@@ -14,12 +14,15 @@ Rails.application.routes.draw do
     end
     resources :groups, only: %i[create new]
   end
-  resources :groups, only: :index
-  resources :groups, only: :show do
-    resources :chatrooms, only: %i[show create] do
+
+  resources :groups, only: %i[index show] do
+    resources :chatrooms, only: %i[create] do
       resources :messages, only: :create
     end
   end
+
+  get "groups/:id/chatroom", to: "chatrooms#show", as: :chatroom
+
   # group_id/chatroom
   resources :invitations, only: %i[index update]
   resources :profiles, only: :show
