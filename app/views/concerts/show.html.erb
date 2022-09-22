@@ -1,13 +1,14 @@
 <div id="page-container-concertshow">
   <div class="show">
     <div class="concert-header-center">
-      <%= image_tag @concert.artist.image_url, class: "show-image" %>
-      <h1 id="h1-basic-styling">TODO: <%= @concert.artist.name %> centered in the image above</h1>
+      <div class="img-color" style="background-image: url(<%= @concert.artist.image_url %>)"></div>
+      <div class="img-gradient"></div>
+      <h1 id="h1-basic-styling"> <%= @concert.artist.name %> </h1>
     </div>
     <h1 id="show-h1">Want to go?</h1>
-    <h2 id="h2-basic-styling">Create a group to invite some friends!</p>
+    <h2 id="h2-basic-styling">Create a group to invite some friends!</h2>
 
-    <div class="show-detail-container">
+    <div class="show-detail-container-last">
       <div class="show-emoji">
         📅
       </div>
@@ -18,7 +19,7 @@
         <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
       </div>
     </div>
-    <div class="show-detail-container">
+    <div class="show-detail-container-last">
       <div class="show-emoji">
         📍
       </div>
@@ -27,7 +28,7 @@
         <h3>In <%= @concert.location %></h3>
       </div>
     </div>
-    <div class="show-detail-container">
+    <div class="show-detail-container-last">
       <div class="show-emoji">
         🧑‍🤝‍🧑
       </div>
