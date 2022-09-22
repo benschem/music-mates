@@ -1,7 +1,9 @@
 <!-- IF YOU ARE GOING TO STYLE THIS, LET MICAH KNOW! THERE IS EXTRA STYLING IN JAVASCRIPT-->
 <div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+
   <div class="messages" data-chatroom-subscription-target="messages">
     <% chatroom.messages.each do |msg| %>
+
       <div class="message-row d-flex <%= msg.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
         <div class="<%= msg.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
           <%= render "messages/message", message: msg %>
@@ -9,13 +11,14 @@
       </div>
     <% end %>
   </div>
+
   <div class="msg-input">
     <%= simple_form_for [group, chatroom, message],
       html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
         %>
         <%= f.input :content,
           label: false,
-          placeholder: "Message ##{chatroom.name}",
+          placeholder: "##{chatroom.name}",
           wrapper_html: {class: "flex-grow-1 chat-input"}
         %>
         <%= f.submit "Send", class: "send-btn mb-3" %>
