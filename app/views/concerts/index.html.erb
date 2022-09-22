@@ -24,10 +24,11 @@
     <% end %>
   <% end %>
 
-  <div>
+  <div class= "text-center">
     <%= link_to "Check for new concerts!", fetch_concerts_concerts_path, data: {turbo_method: :patch} %>
-    <p>This might take 60 - 90 seconds...</p>
-    <p>Please do not refresh the page after clicking.</p>
+
+    <p class= "p1-basic-styling text-center">This might take 60 - 90 seconds...</p>
+    <p class= "p1-basic-styling text-center">Please do not refresh the page after clicking.</p>
   </div>
 
 </div>
