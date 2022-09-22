@@ -3,7 +3,7 @@
     <%= cl_image_tag user.photo.key, class: "avatar" %>
   <% end %>
   <% if concert.users.without_me(current_user).count > 5 %>
-    <div class="avatar-overflow">
+    <div class="avatar">
       + <%= concert.users.without_me(current_user).count - 5 %>
     </div>
   <% end %>
