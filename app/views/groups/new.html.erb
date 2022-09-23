@@ -16,8 +16,18 @@
           <% @users.each do |user| %>
           <% next if user == current_user  %>
           <div class="friends-invite"> <div class="avatar-name d-flex align-items-center">
-            <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
-            <p class="ms-2 mb-0"><%= user.first_name + " " + user.last_name %></p>
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
+            <% else %>
+              <%= image_tag "default_avatar.jpg", class: "avatar group-avatar" %>
+            <% end %>
+            <p class="ms-2 mb-0">
+              <% if user.last_name.present? %>
+                <%= user.first_name + " " + user.last_name %>
+              <% else %>
+                <%= user.first_name %>
+              <% end %>
+            </p>
           </div>
           <label class="switch">
             <%= check_box_tag 'user_ids[]', user.id %>
