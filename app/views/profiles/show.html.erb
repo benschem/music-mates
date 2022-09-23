@@ -7,7 +7,7 @@
       <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key, class: "avatar avatar-show" %>
       <% else %>
-        <%= image_tag "Vince", class: "avatar" %>
+        <%= image_tag "default_avatar.jpg", class: "avatar group-avatar" %>
       <% end %>
       <%= @user.first_name + " " + @user.last_name %>
     </div>
