@@ -139,3 +139,20 @@ a {
   color: #2B3A67;
   text-align: center;
 }
+
+.a-tag-center a {
+  color: white;
+  font-size: 16px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.a-tag-center p {
+  margin-top: 5px;
+}
+
+.a-tag-center {
+  margin-bottom: 12px;
+}
