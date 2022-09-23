@@ -9,7 +9,7 @@
       <h1>You're going!</h1>
       <div class="info-group">
         <p>📅 On <%= @concert.date.strftime("%A %e %B %Y") %></p>
-        <p>From <%= @concert.date.strftime("%l:%M %P %Z") %></p>
+        <p>From <%= @concert.date.strftime("%l:%M %P") %></p>
       </div>
       <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
       <div class="info-group">
