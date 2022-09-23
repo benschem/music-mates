@@ -1,9 +1,9 @@
 <div id="page-container-groups-index">
   <div class="group-index">
-    <div class="show">
-      <h1>These are the concerts you're attending!</h1>
-    </div>
     <% if @groups.count >= 1 %>
+      <div class="show">
+        <h1>These are the concerts you're attending!</h1>
+      </div>
       <% @groups.each do |group| %>
         <%= link_to group_path(group) do %>
           <% concert = group.concert %>
@@ -33,8 +33,11 @@
         <% end %>
       <% end %>
     <% else %>
-      <p id="no-invites">You're not attending any concerts yet!</p>
+      <div class="show">
+        <h1>You're not attending any concerts yet!</h1>
+      </div>
       <div class="sad-duck"><%= image_tag "sad_duck.gif", class: 'sad-duck' %></div>
     <% end %>
   </div>
 </div>
+<%#  %>
