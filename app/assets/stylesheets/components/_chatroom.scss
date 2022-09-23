@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
-  height: calc(100vh - 310px);
+  height: calc(100vh - 340px);
   max-height: 550px;
 
   h1 {
@@ -14,7 +14,11 @@
     color: #2B3A67;
     text-align: center;
     font-weight: 700;
+  }
 
+  .msg-input {
+    margin-top: 15px;
+    height: 25px;
   }
 
   .messages {
