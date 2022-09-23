@@ -19,7 +19,7 @@
             <% if user.photo.attached? %>
               <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
             <% else %>
-              <%= image_tag "default_avatar", class: "avatar group-avatar" %>
+              <%= image_tag "default_avatar.jpg", class: "avatar group-avatar" %>
             <% end %>
             <p class="ms-2 mb-0">
               <% if user.last_name.present? %>
