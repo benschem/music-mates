@@ -15,8 +15,7 @@ class Concert < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_concerts, against: {
     venue: 'B',
-    description: 'C',
-    city: 'D',
+    city: 'C',
   },
     associated_against: {
       :artist => { :name => 'A' }
