@@ -14,7 +14,7 @@
       </div>
       <div class="show-detail">
         <h2><%= @concert.date.strftime("%A %e %B %Y") %></h2>
-        <h3>From <%= @concert.date.strftime("%l:%M %P %Z") %></h3>
+        <h3>From <%= @concert.date.strftime("%l:%M %P") %></h3>
         <%# TIME DOES NOT WORK %>
         <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
       </div>
