@@ -1,14 +1,15 @@
-<div class="navbar-space"></div>
-<div class="chatroom">
-  <h1 id="chatroom-name"><%= link_to "#{@chatroom.name}", group_path(@group) %></h1>
-  <div class="chatroom-friends">
-    <h6> Mates: </h6>
-    <div id="chatroom-friend-avatars">
-    <%= render "shared/index_avatars", concert: @group %>
+<div id="page-container">
+  <div class="chatroom">
+    <h1 id="chatroom-name"><%= link_to "#{@chatroom.name}", group_path(@group) %></h1>
+    <div class="chatroom-friends">
+      <h6> Mates: </h6>
+      <div id="chatroom-friend-avatars">
+      <%= render "shared/index_avatars", concert: @group %>
+      </div>
     </div>
-  </div>
-  <div class="chatbox-show">
-    <%= render "chatbox", chatroom: @chatroom, message: @message, group: @group %>
+    <div class="chatbox-show">
+      <%= render "chatbox", chatroom: @chatroom, message: @message, group: @group %>
+    </div>
   </div>
 </div>
 <!-- HEROKU needs to install redis. Check the lecture notes on Chat-->
