@@ -2,7 +2,11 @@
 
   <div class="avatar-container">
     <% concert.users.without_me(current_user).first(5).each do |user|%>
-      <%= cl_image_tag user.photo.key, class: "avatar" %>
+      <% if user.photo.attached? %>
+        <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
+      <% else %>
+        <%= image_tag "default_avatar.jpg", class: "avatar group-avatar" %>
+      <% end %>
     <% end %>
   </div>
   <% if concert.users.without_me(current_user).count > 5 %>

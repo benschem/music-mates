@@ -3,11 +3,10 @@
     <div class="show">
       <h1>These are the concerts you're attending!</h1>
     </div>
-
     <% if @groups.count >= 1 %>
       <% @groups.each do |group| %>
         <%= link_to group_path(group) do %>
-        <% concert = group.concert %>
+          <% concert = group.concert %>
           <div class="concert-card">
             <div class="img-grey" style="background-image: url(<%= concert.artist.image_url %>)"></div>
             <div class="img-gradient"></div>
@@ -18,7 +17,11 @@
             </div>
             <div class="concert-avatars">
               <% group.users.without_me(current_user).first(5).each do |user|%>
-                <%= cl_image_tag user.photo.key, class: "avatar" %>
+                <% if user.photo.attached? %>
+                  <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
+                <% else %>
+                  <%= image_tag "default_avatar.jpg", class: "avatar group-avatar" %>
+                <% end %>
               <% end %>
               <% if group.users.without_me(current_user).count > 5 %>
                 <div class="avatar">

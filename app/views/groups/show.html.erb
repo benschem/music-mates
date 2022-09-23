@@ -1,38 +1,38 @@
 <div id="page-container-groupshow">
-
-<div class="show">
-
-  <div class="concert-header-center">
-    <div class="img-color" style="background-image: url(<%= @concert.artist.image_url %>)"></div>
-    <div class="img-gradient"></div>
-    <h1 id="h1-basic-styling"> <%= @concert.artist.name %> </h1>
-  </div>
-
-  <div class="group-info-container">
-    <h1>You're going!</h1>
-    <div class="info-group">
-      <p>📅 On <%= @concert.date.strftime("%A %e %B %Y") %></p>
-      <p>From <%= @concert.date.strftime("%l:%M %P %Z") %></p>
+  <div class="show">
+    <div class="concert-header-center">
+      <div class="img-color" style="background-image: url(<%= @concert.artist.image_url %>)"></div>
+      <div class="img-gradient"></div>
+      <h1 id="h1-basic-styling"> <%= @concert.artist.name %> </h1>
     </div>
-    <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
-    <div class="info-group">
-      <p>📍 At <%= @concert.venue %></p>
-      <p>In <%= @concert.location %></p>
+    <div class="group-info-container">
+      <h1>You're going!</h1>
+      <div class="info-group">
+        <p>📅 On <%= @concert.date.strftime("%A %e %B %Y") %></p>
+        <p>From <%= @concert.date.strftime("%l:%M %P %Z") %></p>
+      </div>
+      <!-- Time.current.in_time_zone("America/New_York").strftime("TZ is: %Z") # => "TZ is: EDT" -->
+      <div class="info-group">
+        <p>📍 At <%= @concert.venue %></p>
+        <p>In <%= @concert.location %></p>
+      </div>
     </div>
-  </div>
-
-  <% if @pending_invitations.count > 0 %>
-    <h2 class="invitation-status">🧑‍🤝‍🧑 Awaiting response from <%= pluralize(@pending_invitations.count, 'mate') %></h2>
-  <% else %>
-    <h2 class="invitation-status">🧑‍🤝‍🧑 No pending invitations!</h2>
-  <% end %>
+    <% if @pending_invitations.count > 0 %>
+      <h2 class="invitation-status">🧑‍🤝‍🧑 Awaiting response from <%= pluralize(@pending_invitations.count, 'mate') %></h2>
+    <% else %>
+      <h2 class="invitation-status">🧑‍🤝‍🧑 No pending invitations!</h2>
+    <% end %>
     <div class="invitation-box">
       <% if @pending_invitations.empty? %>
         <div>Everybody has responded.</div>
       <% else %>
         <div class="avatar-container">
           <% @pending_invitations.first(5).each do |invitation|%>
-            <%= cl_image_tag invitation.user.photo.key, class: "avatar" %>
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
+            <% else %>
+              <%= image_tag "default_avatar.jpg", class: "avatar group-avatar" %>
+            <% end %>
           <% end %>
         </div>
         <% if @pending_invitations.count > 5 %>
@@ -42,27 +42,28 @@
         <% end %>
       <% end %>
     </div>
-
-  <h2 class="invitation-status">🧑‍🤝‍🧑 <%= pluralize(@accepted_invitations.count, 'mate') %> going</h2>
-  <div class="invitation-box">
-    <% if @accepted_invitations.empty? %>
-      <div>Nobody has said they're going yet!</div>
-    <% else %>
-      <div class="avatar-container">
-        <% @accepted_invitations.each do |invitation|%>
-          <%= cl_image_tag invitation.user.photo.key, class: "avatar" %>
-        <% end %>
-      </div>
-      <% if @accepted_invitations.count > 5 %>
-        <div class="avatar-overflow">
-          + <%= @accepted_invitations.count - 5 %>
+    <h2 class="invitation-status">🧑‍🤝‍🧑 <%= pluralize(@accepted_invitations.count, 'mate') %> going</h2>
+    <div class="invitation-box">
+      <% if @accepted_invitations.empty? %>
+        <div>Nobody has said they're going yet!</div>
+      <% else %>
+        <div class="avatar-container">
+          <% @accepted_invitations.each do |invitation|%>
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "avatar group-avatar" %>
+            <% else %>
+              <%= image_tag "default_avatar.jpg", class: "avatar group-avatar" %>
+            <% end %>
+          <% end %>
         </div>
+        <% if @accepted_invitations.count > 5 %>
+          <div class="avatar-overflow">
+            + <%= @accepted_invitations.count - 5 %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="invitation-box-2">
+      <%= link_to "Chat with this group!", chatroom_path(@group), id:"show-btn-groups" %>
+    </div>
   </div>
-
-  <div class="invitation-box-2">
-    <%= link_to "Chat with this group!", chatroom_path(@group), id:"show-btn-groups" %>
-  </div>
-
-</div>
