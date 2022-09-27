@@ -17,6 +17,9 @@
 bundle install
 yarn install
 yarn build --watch
+rails db:create
+rails db:migrate
+rails db:seed
 ```
 
 Running the app in development mode:
@@ -27,6 +30,8 @@ rails s
 Open http://localhost:3000
 
 Reload the page to see your edits.
+
+Check the seeds file for demo user logins.
 
 ## Notes
 
