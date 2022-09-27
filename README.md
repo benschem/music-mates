@@ -9,9 +9,9 @@
 
 ### ✨ [Demo](youtube link with an app demo will go here)
 
-## 🛠 Installation
+## Installation
 
-Setting up the app:
+🛠 Setting up the app:
 >
 ```sh
 bundle install
@@ -25,6 +25,7 @@ Running the app in development mode:
 rails s
 ```
 Open http://localhost:3000
+
 Reload the page to see your edits.
 
 ## Notes
