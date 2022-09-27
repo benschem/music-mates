@@ -48,12 +48,10 @@ Access to the Bandsintown API was granted under a student license and will only 
 
 ## Authors
 
-👤 **Ben Schembri, Micah Kim, Tae Lee, Chloe Farrell**
-
-* Github: [@benschem](https://github.com/benschem)
-* Github: [@lavithian](https://github.com/lavithian)
-* Github: [@taeleenz38](https://github.com/taeleenz38)
-* Github: [@chloefarrell](https://github.com/chloefarrell)
+👤 **Ben Schembri** * Github: [@benschem](https://github.com/benschem)
+👤 **Micah Kim** * Github: [@lavithian](https://github.com/lavithian)
+👤 **Tae Lee** * Github: [@taeleenz38](https://github.com/taeleenz38)
+👤 **Chloe Farrell** * Github: [@chloefarrell](https://github.com/chloefarrell)
 
 ## Show your support
 
