@@ -25,7 +25,10 @@ Login with Spotify
 
 👤 **Ben Schembri, Micah Kim, Tae Lee, Chloe Farrell**
 
-* Github: [@benschem, lavithian, taeleenz38, chloefarrell](https://github.com/benschem, lavithian, taeleenz38, chloefarrell)
+* Github: [@benschem](https://github.com/benschem)
+* Github: [@lavithian](https://github.com/lavithian)
+* Github: [@taeleenz38](https://github.com/taeleenz38)
+* Github: [@chloefarrell](https://github.com/chloefarrell)
 
 ## Show your support
 
