@@ -41,12 +41,10 @@ After logging in, click the 'Check for new concerts' button on the Concerts Inde
 
 ## Notes
 
-```sh
 A Spotify account is required to login to and use the live website.
 Because Spotify considers the app to still be in development mode, currently only 25 Spotify users can login and use the app. These users must be explicitly added in the Spotify dashboard before they can authenticate with the app. If you’d like to access the live website, please let us know!
 
 Access to the Bandsintown API was granted under a student license and will only be availble until December 15th 2022.
-```
 
 ## Author
 
