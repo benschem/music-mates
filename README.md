@@ -46,7 +46,7 @@ Because Spotify considers the app to still be in development mode, currently onl
 
 Access to the Bandsintown API was granted under a student license and will only be availble until December 15th 2022.
 
-## Author
+## Authors
 
 👤 **Ben Schembri, Micah Kim, Tae Lee, Chloe Farrell**
 
