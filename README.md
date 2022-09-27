@@ -33,6 +33,10 @@ Reload the page to see your edits.
 
 Check the seeds file for demo user logins.
 
+To bypass the Spotify login page, just go directly to the url of any of the pages.
+
+After logging in, click the 'Check for new concerts' button on the Concerts Index to pull concert data from the Bandsintown API.
+
 ## Notes
 
 ```sh
