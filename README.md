@@ -3,11 +3,13 @@
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> A proof of concept web app to find friends to go to local concerts with based on your music listening history. It was built using Ruby on Rails and a Postgres database for the back end, and HTML, SCSS and Javascript on the front end. It relies on the Spotify API for users' listening history and the Bandsintown API for concert data. It was presented as a final project for batch #966 of the Le Wagon Web Development Bootcamp in Melbourne on September 23rd 2022.
+> A proof of concept web app to find friends to go to local concerts with based on your music listening history. It was built using Ruby on Rails and a Postgres database for the back end, and HTML, SCSS and Javascript on the front end. It relies on the Spotify API for users' listening history and the Bandsintown API for concert data. It was made in 2 weeks and presented as a final project for batch #966 of the Le Wagon Web Development Bootcamp in Melbourne on September 23rd 2022.
 
-### 🏠 [Homepage](https://www.music-mates.com)
+### 📱 [View Live](https://www.music-mates.com)
+NOTE: App was designed for mobile only, specifcally iPhone X screen size.
 
-### ✨ [Demo](youtube link with an app demo will go here)
+### ✨ [Demo Walkthrough]
+Youtube link with a video of us demonstrating the app will go here once it's available!
 
 ## Installation
 
@@ -42,6 +44,8 @@ After logging in, click the 'Check for new concerts' button on the Concerts Inde
 ```sh
 A Spotify account is required to login to and use the live website.
 Because Spotify considers the app to still be in development mode, currently only 25 Spotify users can login and use the app. These users must be explicitly added in the Spotify dashboard before they can authenticate with the app. If you’d like to access the live website, please let us know!
+
+Access to the Bandsintown API was granted under a student license and will only be availble until December 15th 2022.
 ```
 
 ## Author
