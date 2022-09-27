@@ -6,7 +6,7 @@
 > A proof of concept web app to find friends to go to local concerts with based on your music listening history. It was built using Ruby on Rails and a Postgres database for the back end, and HTML, SCSS and Javascript on the front end. It relies on the Spotify API for users' listening history and the Bandsintown API for concert data. It was made in 2 weeks and presented as a final project for batch #966 of the Le Wagon Web Development Bootcamp in Melbourne on September 23rd 2022.
 
 ### 📱 [View Live](https://www.music-mates.com)
-NOTE: App was designed for mobile only, specifcally iPhone X screen size.
+Due to time constraints, this app is not responsive and was designed for mobile only, specifcally iPhone X screen size.
 
 ### ✨ [Demo Walkthrough]
 Youtube link with a video of us demonstrating the app will go here once it's available!
