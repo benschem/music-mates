@@ -7,18 +7,31 @@
 
 ### 🏠 [Homepage](https://www.music-mates.com)
 
-### ✨ [Demo](youtube link here)
+### ✨ [Demo](youtube link with an app demo will go here)
 
-## Install
+## 🛠 Installation
 
+Setting up the app:
+>
 ```sh
+bundle install
 yarn install
+yarn build --watch
 ```
 
-## Usage
+Running the app in development mode:
+>
+```sh
+rails s
+```
+Open http://localhost:3000
+Reload the page to see your edits.
+
+## Notes
 
 ```sh
-Login with Spotify
+A Spotify account is required to login to and use the live website.
+Because Spotify considers the app to still be in development mode, currently only 25 Spotify users can login and use the app. These users must be explicitly added in the Spotify dashboard before they can authenticate with the app. If you’d like to access the live website, please let us know!
 ```
 
 ## Author
@@ -33,6 +46,3 @@ Login with Spotify
 ## Show your support
 
 Give a ⭐️ if you liked this project!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
